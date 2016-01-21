@@ -3,7 +3,7 @@ package com.codez.mainlibrary.utilities.maps_utils.model;
 import android.text.Html;
 import android.util.Log;
 
-import com.codez.mainlibrary.utilities.OtherUtils;
+import com.codez.mainlibrary.utilities.maps_utils.MapUtils;
 import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONArray;
@@ -177,7 +177,7 @@ public class Logistics {
                     jsonObject.getJSONObject(MapsConstants.START_LOC));
             mEndLocation = getLocation(
                     jsonObject.getJSONObject(MapsConstants.END_LOC));
-            mPolyline = OtherUtils.decodePoly(
+            mPolyline = MapUtils.decodePoly(
                     jsonObject.getJSONObject(MapsConstants.POLYLINE)
                             .getString(MapsConstants.POINTS));
             mDistance = new RouteInfo(

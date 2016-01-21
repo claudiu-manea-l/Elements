@@ -1,6 +1,7 @@
 package com.codez.mainlibrary.utilities.maps_utils.model;
 
 import com.codez.mainlibrary.utilities.OtherUtils;
+import com.codez.mainlibrary.utilities.maps_utils.MapUtils;
 import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONArray;
@@ -33,7 +34,7 @@ public class RouteDirections {
     public RouteDirections(JSONObject jsonObject) throws JSONException {
         mSummary = jsonObject.getString(MapsConstants.SUMMARY);
         parseLogisticsArray(jsonObject.getJSONArray(MapsConstants.LOGISTICS));
-        mOverviewPolyline = OtherUtils.decodePoly(
+        mOverviewPolyline = MapUtils.decodePoly(
                 jsonObject.getJSONObject(MapsConstants.OVERVIEW_POLY)
                         .getString(MapsConstants.POINTS));
         mBoundsNE = Logistics.getLocation(

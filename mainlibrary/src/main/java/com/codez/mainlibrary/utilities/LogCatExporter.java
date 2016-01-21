@@ -8,7 +8,8 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Created by Eptron on 11/6/2015.
+ * Created by Claudiu on 11/6/2015.
+ * Small helper class to help export log-cat output to file
  */
 public class LogCatExporter {
 
@@ -20,6 +21,10 @@ public class LogCatExporter {
         mContext = context;
     }
 
+    /**
+     * Writes the current app log to the specified file.
+     * @param fileName name of the file to write to
+     */
     public void export(String fileName) {
         File filename = new File(Environment.getExternalStorageDirectory() + "/" + fileName + ".log");
         try {

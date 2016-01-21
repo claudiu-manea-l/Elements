@@ -243,7 +243,7 @@ public class MultiRequestHelper extends RequestHelper {
     public static RequestParams buildDirectionsParams(String startAddress, String endAddress, String[] waypoints, String mode, boolean isOptimized) {
         RequestParams params = buildDirectionsParams(startAddress, endAddress, mode);
         if (waypoints.length > 0) {
-            params.put("waypoints", OtherUtils.buildWaypointString(waypoints, isOptimized));
+            params.put("waypoints", MapUtils.buildWaypointString(waypoints, isOptimized));
         }
         return params;
     }

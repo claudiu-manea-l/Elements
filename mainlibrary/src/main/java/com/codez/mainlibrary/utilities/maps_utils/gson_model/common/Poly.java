@@ -3,6 +3,7 @@ package com.codez.mainlibrary.utilities.maps_utils.gson_model.common;
 import android.text.TextUtils;
 
 import com.codez.mainlibrary.utilities.OtherUtils;
+import com.codez.mainlibrary.utilities.maps_utils.MapUtils;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class Poly {
 
     public ArrayList<LatLng> getLine() {
         if (!TextUtils.isEmpty(points))
-            return OtherUtils.decodePoly(points);
+            return MapUtils.decodePoly(points);
         else return new ArrayList<>();
     }
 }

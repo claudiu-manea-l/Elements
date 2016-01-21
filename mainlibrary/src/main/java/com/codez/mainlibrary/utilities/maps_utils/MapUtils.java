@@ -21,6 +21,63 @@ public class MapUtils {
         return address.substring(0, pos - 2);
     }
 
+    /**
+     * Decodes the polyline string received from Google Directions API
+     * and adds the polyline points to an array
+     *
+     * @param encoded the encoded string
+     * @return the array containing all the polylines in
+     * coordinate(LatLng) format
+     */
+    public static ArrayList<LatLng> decodePoly(String encoded) {
+        ArrayList<LatLng> poly = new ArrayList<LatLng>();
+        int index = 0, len = encoded.length();
+        int lat = 0, lng = 0;
+        while (index < len) {
+            int b, shift = 0, result = 0;
+            do {
+                b = encoded.charAt(index++) - 63;
+                result |= (b & 0x1f) << shift;
+                shift += 5;
+            } while (b >= 0x20);
+            int dlat = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
+            lat += dlat;
+            shift = 0;
+            result = 0;
+            do {
+                b = encoded.charAt(index++) - 63;
+                result |= (b & 0x1f) << shift;
+                shift += 5;
+            } while (b >= 0x20);
+            int dlng = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
+            lng += dlng;
+
+            LatLng position = new LatLng((double) lat / 1E5, (double) lng / 1E5);
+            poly.add(position);
+        }
+        return poly;
+    }
+
+
+    public static String buildWaypointString(String[] waypoints, boolean isOptimized) {
+        String waypointsString = "";
+        if (isOptimized) {
+            waypointsString = "optimize:true|";
+        }
+        String dashChar = "|";
+        int length = waypoints.length;
+        if (waypoints.length > 8) {
+            length = 8;
+        }
+        for (int i = 0; i < length; i++)
+            if (i == 0) {
+                waypointsString += waypoints[i];
+            } else {
+                waypointsString += dashChar + waypoints[i];
+            }
+        return waypointsString;
+    }
+
     public static LatLng getCoordinatesFromAddress(String address, Context context) {
         Geocoder coder = new Geocoder(context);
         List<Address> foundAddresses = new ArrayList<>();

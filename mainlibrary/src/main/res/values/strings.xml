@@ -12,4 +12,7 @@
     <string name="error_retrieving_data">Error retrieving data</string>
     <string name="device_not_supported">This device is not supported.</string>
     <string name="gms_not_installed">Google play Services not installed, Maps functionality disabled.</string>
+
+    <string name="error_server">Error occured on Back-End</string>
+    <string name="wifi_connection">Connected to WiFi</string>
 </resources>
