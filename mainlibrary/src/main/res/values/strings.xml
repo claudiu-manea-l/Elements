@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MainLibrary</string>
+    <string name="empty_list">No items present in the list!</string>
+    <string name="empty_item">No item</string>
+
+    <string name="no_gps_error">The GPS has not been started or is still trying to initialize</string>
+    <string name="no_internet_error">There is no Internet connection pressent</string>
+    <string name="unknown_error">Unknown error occurred</string>
+    <string name="map_waypoint_error">One or more waypoints not found.</string>
+    <string name="error_message">Unknown error occurred</string>
+    <string name="other_error">Other error occurred</string>
+    <string name="error_retrieving_data">Error retrieving data</string>
+    <string name="device_not_supported">This device is not supported.</string>
+    <string name="gms_not_installed">Google play Services not installed, Maps functionality disabled.</string>
+</resources>

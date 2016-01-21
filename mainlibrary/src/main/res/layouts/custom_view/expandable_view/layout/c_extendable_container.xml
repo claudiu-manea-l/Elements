@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.codez.mainlibrary.custom_views.exp_view.ExpandableView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/normal_margin">
+
+    <RelativeLayout
+        android:id="@+id/container_title_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.codez.mainlibrary.custom_views.TextViewPlus
+            android:id="@+id/container_title"
+            style="@style/TextTheme.Title"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:text="Title" />
+
+        <ImageView
+            android:id="@+id/container_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/small_margin"
+            android:tint="@color/black_overlay"
+            android:src="@drawable/arrow_down" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black_overlay" />
+
+    <FrameLayout
+        android:id="@+id/container_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</com.codez.mainlibrary.custom_views.exp_view.ExpandableView>

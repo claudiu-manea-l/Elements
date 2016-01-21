@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.codez.mainlibrary.custom_views.other.CheckableRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/medium_big_margin">
+
+    <FrameLayout
+        android:id="@+id/check_layout"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.codez.mainlibrary.custom_views.other.CustomCheckbox
+            android:id="@+id/check_box"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_gravity="center"
+            android:focusable="false"
+            android:enabled="false"
+            app:useRadios="false" />
+    </FrameLayout>
+
+    <com.codez.mainlibrary.custom_views.TextViewPlus
+        android:id="@+id/message_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginRight="@dimen/normal_margin"
+        android:layout_alignParentRight="true"
+        android:text="19/10/2015" />
+
+    <LinearLayout
+        android:id="@+id/text_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:layout_marginLeft="@dimen/normal_margin"
+        android:layout_toLeftOf="@id/message_date"
+        android:layout_toRightOf="@id/check_layout"
+        android:orientation="vertical">
+
+        <com.codez.mainlibrary.custom_views.TextViewPlus
+            android:id="@+id/message_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="Frederik Rousseau"
+            android:textColor="@color/black_overlay"
+            android:textSize="23sp"
+            app:customFont="Opensans_light.ttf" />
+
+        <com.codez.mainlibrary.custom_views.TextViewPlus
+            android:id="@+id/message_proj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Tesa Dispo Brico/Makro/Cora"
+            android:textColor="@color/black_overlay"
+            android:textSize="20sp"
+            app:customFont="Opensans_light.ttf" />
+
+        <com.codez.mainlibrary.custom_views.TextViewPlus
+            android:id="@+id/message_pos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="Brico Oostende"
+            android:textColor="@color/black_overlay"
+            android:textSize="18sp"
+            app:customFont="Opensans_light.ttf" />
+    </LinearLayout>
+</com.codez.mainlibrary.custom_views.other.CheckableRelativeLayout>
