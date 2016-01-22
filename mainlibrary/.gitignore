@@ -1,1 +1,9 @@
+.gradle
+/gradle
 /build
+/local.properties
+.DS_Store
+/app/build
+mainlibrary.iml
+/app/app.iml
+/.idea
