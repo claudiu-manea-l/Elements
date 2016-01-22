@@ -185,14 +185,6 @@ public class DateUtilsTests {
         assertThat(lastMonth, is(returnedMonth));
     }
 
-    @Test
-    public void getLastMonthDate_success2() {
-        String lastMonth = "22/12/2015";
-        String returnedMonth = DateUtils.getLastMonthDate();
-        assertThat(lastMonth, is(returnedMonth));
-    }
-
-
     public void getDaysString_englishShort() {
         String[] weekDays = new String[]{
                 "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"
