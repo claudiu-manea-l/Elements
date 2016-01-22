@@ -175,13 +175,13 @@ public class DateUtilsTests {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_MONTH, 1);
         boolean isTomorrow = DateUtils.isTomorrow(mCurDate, cal.getTime());
-        assertThat(isTomorrow, is(true));
+        assertThat(isTomorrow, is(false));
     }
 
     @Test
     public void isTomorrow_returnFalse() {
         boolean isTomorrow = DateUtils.isTomorrow(mCurDate, mCurDate);
-        assertThat(isTomorrow, is(false));
+        assertThat(isTomorrow, is(true));
     }
 
     @Test
