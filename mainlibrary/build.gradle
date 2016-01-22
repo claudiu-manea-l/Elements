@@ -69,22 +69,3 @@ dependencies {
         exclude group: 'com.google.android', module: 'support-v4'
     }
 }
-project.gradle.taskGraph.whenReady { taskGraph ->
-    if (taskGraph.allTasks.find { it.name == "test" } != null) {
-        project.tasks.withType(Test).each { Test test ->
-            test.ignoreFailures = true
-            test.afterSuite { td, tr ->
-                if (td.getParent() == null) {
-                    project.ext.testFailures = tr.getFailedTestCount()
-                }
-            } // Investigate how to stop gradle from Failed Build on UnitTest failure :((
-        }
-        project.tasks.getByName("test") {
-            doLast {
-                if (testFailures) {
-                    throw new Exception("There were ${testFailures} test failures")
-                }
-            }
-        }
-    }
-}
