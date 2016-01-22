@@ -18,6 +18,10 @@ android {
         }
     }
 
+    lintOptions {
+        abortOnError false
+    }
+
     sourceSets {
         main {
             manifest.srcFile '/src/main/AndroidManifest.xml'
