@@ -156,6 +156,12 @@ public class DateUtilsTests {
     }
 
     @Test
+    public void isToday_withString_returnTrue2() {
+        boolean isToday = DateUtils.isToday(mTestDate_AppDateFormat);
+        assertThat(isToday, is(true));
+    }
+
+    @Test
     public void isToday_withString_returnFalse() {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_MONTH, 1);
