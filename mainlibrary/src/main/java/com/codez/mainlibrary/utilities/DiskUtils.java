@@ -19,7 +19,6 @@ import java.lang.reflect.Type;
  * Created by Eptron on 12/15/2015.
  */
 public class DiskUtils {
-
     /**
      * Delets a file with that path if it exists
      * @param path
