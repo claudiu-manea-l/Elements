@@ -16,19 +16,21 @@ public class ConnectReceiver extends BroadcastReceiver {
     public static final String ACTION_INFORM = "com.codez.ACTION_INFORM";
 
     public void onReceive(Context context, Intent intent) {
-        ConnectivityManager connMg = (ConnectivityManager) context
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo wifi = connMg.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        //NetworkInfo mobile = connMg.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        if (intent.getAction().equals(ACTION_INFORM)) {
+            ConnectivityManager connMg = (ConnectivityManager) context
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo wifi = connMg.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+            //NetworkInfo mobile = connMg.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 
-        if (wifi.isConnected()) {
-            ConnectManager.getManager().setConnected(true);
-            EventBus.getDefault().post(new ConnectedToWifi());
-        } else {
-            ConnectManager.getManager().setConnected(false);
+            if (wifi.isConnected()) {
+                ConnectManager.getManager().setConnected(true);
+                EventBus.getDefault().post(new ConnectedToWifi());
+            } else {
+                ConnectManager.getManager().setConnected(false);
+            }
+            Intent mIntent = new Intent();
+            mIntent.setAction(ACTION_INFORM);
+            context.sendBroadcast(mIntent);
         }
-        Intent mIntent = new Intent();
-        mIntent.setAction(ACTION_INFORM);
-        context.sendBroadcast(mIntent);
     }
 }

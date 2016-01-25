@@ -7,7 +7,6 @@ import com.codez.mainlibrary.utilities.DateUtils;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 

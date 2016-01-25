@@ -38,8 +38,10 @@ public abstract class UpdatableSQList extends RestfulSQLList {
                     UpdatableItem.TIMESTAMP_PROJ,
                     null, null, null);
         }
-        if (cur != null && cur.moveToFirst())
+        if (cur != null && cur.moveToFirst()) {
             timestamp = cur.getLong(cur.getColumnIndex(UpdatableItem.MAX_STAMP));
+            cur.close();
+        }
         return timestamp;
     }
 

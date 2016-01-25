@@ -447,7 +447,7 @@ public class DateUtils {
         String[] temp = new String[7];
         for (int i = 0; i < temp.length; i++) {
             temp[i] = format.format(cal.getTime());
-            temp[i] = temp[i].substring(0, 1).toUpperCase() + temp[i].substring(1);
+            temp[i] = temp[i].substring(0, 1).toUpperCase(locale) + temp[i].substring(1);
             cal.add(Calendar.DAY_OF_WEEK, 1);
         }
         return temp;

@@ -28,6 +28,7 @@ public class ClearableEditText extends EditText implements View.OnFocusChangeLis
         boolean shouldClear = a.getBoolean(R.styleable.ClearableEditText_clearOnFocus, true);
         if (shouldClear)
             setOnFocusChangeListener(this);
+        a.recycle();
     }
 
     @Override
