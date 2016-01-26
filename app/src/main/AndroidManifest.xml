@@ -8,6 +8,29 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity
+            android:name=".SimpleActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activities.ExpandableViewActivity"
+            android:label="@string/app_name">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SimpleActivity" />
+        </activity>
+
+        <provider
+            android:name=".restful_list.model.DataProvider"
+            android:authorities="com.codez.elements.demo"
+            android:enabled="true"
+            android:exported="false" />
+
     </application>
 
 </manifest>

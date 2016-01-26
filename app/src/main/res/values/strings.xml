@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">Elements</string>
+    <string name="app_name">Elements Demo</string>
+
+    <string-array name="list_items">
+        <item>ExpandableView</item>
+        <item>RebuildableSpinner</item>
+        <item>RestfulList</item>
+        <item>TitledList</item>
+    </string-array>
 </resources>
