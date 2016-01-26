@@ -20,6 +20,7 @@ android {
 
     lintOptions {
         abortOnError false
+        htmlOutput file("build/lint/lint-report.html")
     }
 
     sourceSets {
