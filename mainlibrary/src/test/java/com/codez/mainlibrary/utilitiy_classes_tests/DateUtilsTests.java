@@ -181,6 +181,7 @@ public class DateUtilsTests {
     public void isTomorrow_returnFalse() {
         boolean isTomorrow = DateUtils.isTomorrow(mCurDate, mCurDate);
         assertThat(isTomorrow, is(false));
+        //
     }
 
     @Test
