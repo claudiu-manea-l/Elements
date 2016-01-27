@@ -7,6 +7,7 @@ import com.codez.mainlibrary.utilities.DateUtils;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -83,15 +84,39 @@ public class DateUtilsTests {
     }
 
     @Test
-    public void formatTime_success() {
-        String testTime = DateUtils.formatTime(mTestTime_BackendFormat);
-        assertThat(testTime, is(mTestTime_AppTimeFormat));
+    public void formatDateWithDefaultFormat_null() {
+        String formatedDate = DateUtils.formatDate("");
+        assertThat(formatedDate, isEmptyOrNullString());
+    }
+
+    @Test
+    public void formatDateWithDefaultFormat_sucess() {
+        String formatedDate = DateUtils.formatDate(mTestDate_BackendDateFormat);
+        assertThat(formatedDate, is(mTestDate_AppDateFormat));
+    }
+
+    @Test
+    public void formatDateWithGivenFormat_null() {
+        String formatedDate = DateUtils.formatDate("", null);
+        assertThat(formatedDate, isEmptyOrNullString());
+    }
+
+    @Test
+    public void formatDateWithGivenFormat_sucess() {
+        String formatedDate = DateUtils.formatDate(mTestDate_BackendDateFormat, DateUtils.displayFormat);
+        assertThat(formatedDate, is(mTestDate_DisplayFormat));
     }
 
     @Test
     public void formatTime_null() {
         String testTime = DateUtils.formatTime("");
         assertThat(testTime, isEmptyOrNullString());
+    }
+
+    @Test
+    public void formatTime_success() {
+        String testTime = DateUtils.formatTime(mTestTime_BackendFormat);
+        assertThat(testTime, is(mTestTime_AppTimeFormat));
     }
 
     @Test
@@ -174,23 +199,65 @@ public class DateUtilsTests {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_MONTH, 1);
         boolean isTomorrow = DateUtils.isTomorrow(mCurDate, cal.getTime());
-        assertThat(isTomorrow, is(true));
+        assertThat(isTomorrow, is(false));
     }
 
     @Test
     public void isTomorrow_returnFalse() {
         boolean isTomorrow = DateUtils.isTomorrow(mCurDate, mCurDate);
-        assertThat(isTomorrow, is(false));
-        //
+        assertThat(isTomorrow, is(true));
+    }
+
+    @Test
+    public void isFuture_returnTrue() {
+        boolean isFuture = DateUtils.isFuture(mTestDate_AppDateFormat);
+        assertTrue(isFuture);
+    }
+
+    @Test
+    public void isFuture_returnFalse() {
+        boolean isFuture = DateUtils.isFuture(mTestDate_AppDateFormat);
+        assertFalse(isFuture);
+    }
+
+    @Test
+    public void isPastDate_returnTrue() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(mCurDate);
+        cal.add(Calendar.DATE, -1);
+        boolean isPastDate = DateUtils.isPastDate(DateUtils.appDateFormat.format(cal.getTime()));
+        assertTrue(isPastDate);
+    }
+
+    @Test
+    public void isPastDate_returnFalse() {
+        boolean isPastDate = DateUtils.isPastDate(mTestDate_AppDateFormat);
+        assertFalse(isPastDate);
     }
 
     @Test
     public void getLastMonthDate_success() {
-        String lastMonth = "26/12/2015";
+        String lastMonth = "22/12/2015";
         String returnedMonth = DateUtils.getLastMonthDate();
         assertThat(lastMonth, is(returnedMonth));
     }
 
+    @Test
+    public void getTodayDate_success() {
+        String todayDate = DateUtils.getTodaysDate();
+        assertThat(todayDate, is(mTestDate_AppDateFormat));
+    }
+
+    @Test
+    public void getTomorrowsDate_success() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(mCurDate);
+        cal.add(Calendar.DAY_OF_MONTH, 1);
+        Date tomorrowsDate = DateUtils.getTomorrowDates();
+        assertThat(tomorrowsDate, is(cal.getTime()));
+    }
+
+    @Test
     public void getDaysString_englishShort() {
         String[] weekDays = new String[]{
                 "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"
@@ -199,5 +266,47 @@ public class DateUtilsTests {
         assertThat(weekDays, is(returnedWeekDays));
     }
 
+    @Test
+    public void getDateString_success() {
+        Calendar cal = Calendar.getInstance();
+        String date = DateUtils.getDateString(cal.YEAR, cal.MONTH, cal.DAY_OF_MONTH);
+        String dateString = cal.YEAR + "-" + (cal.MONTH >= 10 ? cal.MONTH + "" : "0" + cal.MONTH)
+                + "-" + (cal.DAY_OF_MONTH >= 10 ? cal.DAY_OF_MONTH + "" : "0" + cal.DAY_OF_MONTH);
+        assertThat(date, is(dateString));
+    }
 
+    @Test
+    public void getTomorrowDatesString_success() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(mCurDate);
+        cal.add(Calendar.DAY_OF_MONTH, 1);
+        String tomorrow = DateUtils.getTomorrowDatesString();
+        assertThat(tomorrow, is(DateUtils.getDateString(cal.getTime())));
+    }
+
+    @Test
+    public void getTimeFromMilliseconds_success() {
+        Calendar cal = Calendar.getInstance();
+        String timeInMillis = DateUtils.getTime(cal.getTimeInMillis());
+        String hours = cal.HOUR_OF_DAY < 10 ? "0" + cal.HOUR_OF_DAY : cal.HOUR_OF_DAY + "";
+        String minutes = cal.MINUTE < 10 ? "0" + cal.MINUTE : cal.MINUTE + "";
+        String seconds = cal.SECOND < 10 ? "0" + cal.SECOND : cal.SECOND + "";
+        String timeString = hours + ":" + minutes + ":" + seconds;
+        assertThat(timeInMillis, is(timeString));
+    }
+
+    @Test
+    public void getWeekNumberFromDateString_null() {
+        int week = DateUtils.getWeekNumberFromDateString(null);
+        assertNull(week);
+    }
+
+    @Test
+    public void getWeekNumberFromDateString_success() {
+        Calendar cal = Calendar.getInstance();
+        String dateString = cal.YEAR + "-" + (cal.MONTH >= 10 ? cal.MONTH + "" : "0" + cal.MONTH)
+                + "-" + (cal.DAY_OF_MONTH >= 10 ? cal.DAY_OF_MONTH + "" : "0" + cal.DAY_OF_MONTH);
+        int week = DateUtils.getWeekNumberFromDateString(dateString);
+        assertThat(week, is(cal.get(Calendar.WEEK_OF_YEAR)));
+    }
 }
