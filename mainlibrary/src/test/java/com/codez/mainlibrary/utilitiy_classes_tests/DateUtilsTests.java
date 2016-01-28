@@ -41,28 +41,28 @@ public class DateUtilsTests {
     @Test
     public void changeFormat_nulls() {
         String date = DateUtils.changeFormat(null, null, null);
-        assertThat(date, isEmptyOrNullString());
+        assertNull(date);
     }
 
     @Test
     public void changeFormat_success() {
-        String formatedDate = DateUtils.changeFormat(
+        String formattedDate = DateUtils.changeFormat(
                 mTestDate_AppDateFormat, DateUtils.appDateFormat, DateUtils.displayFormat);
-        assertThat(formatedDate, is(mTestDate_DisplayFormat));
+        assertThat(formattedDate, is(mTestDate_DisplayFormat));
     }
 
     @Test
     public void changeFormat_fail() {
-        String formatedDate = DateUtils.changeFormat(
+        String formattedDate = DateUtils.changeFormat(
                 "", DateUtils.appDateFormat, DateUtils.backendDateFormat
         );
-        assertThat(formatedDate, is(""));
+        assertThat(formattedDate, is(""));
     }
 
     @Test
     public void convertDisplayDate_null() {
         String testDate = DateUtils.convertDisplayDate(null);
-        assertThat(testDate, isEmptyOrNullString());
+        assertNull(testDate);
     }
 
     @Test
@@ -74,7 +74,7 @@ public class DateUtilsTests {
     @Test
     public void formatDateToDisplay_null() {
         String testDate = DateUtils.formatDateToDisplay(null);
-        assertThat(testDate, isEmptyOrNullString());
+        assertNull(testDate);
     }
 
     @Test
@@ -85,26 +85,20 @@ public class DateUtilsTests {
 
     @Test
     public void formatDateWithDefaultFormat_null() {
-        String formatedDate = DateUtils.formatDate("");
-        assertThat(formatedDate, isEmptyOrNullString());
+        String formattedDate = DateUtils.formatDate("");
+        assertThat(formattedDate, isEmptyOrNullString());
     }
 
     @Test
-    public void formatDateWithDefaultFormat_sucess() {
-        String formatedDate = DateUtils.formatDate(mTestDate_BackendDateFormat);
-        assertThat(formatedDate, is(mTestDate_AppDateFormat));
+    public void formatDateWithDefaultFormat_success() {
+        String formattedDate = DateUtils.formatDate(mTestDate_BackendDateFormat);
+        assertThat(formattedDate, is(mTestDate_AppDateFormat));
     }
 
     @Test
-    public void formatDateWithGivenFormat_null() {
-        String formatedDate = DateUtils.formatDate("", null);
-        assertThat(formatedDate, isEmptyOrNullString());
-    }
-
-    @Test
-    public void formatDateWithGivenFormat_sucess() {
-        String formatedDate = DateUtils.formatDate(mTestDate_BackendDateFormat, DateUtils.displayFormat);
-        assertThat(formatedDate, is(mTestDate_DisplayFormat));
+    public void formatDateWithGivenFormat_success() {
+        String formattedDate = DateUtils.formatDate(mTestDate_BackendDateFormat, DateUtils.displayFormat);
+        assertThat(formattedDate, is(mTestDate_DisplayFormat));
     }
 
     @Test
@@ -141,7 +135,7 @@ public class DateUtilsTests {
     public void getStartOfDay_success() {
         Date date = DateUtils.getStartOfDay(new Date());
         String time = DateUtils.appTimeFormat.format(date);
-        assertThat(time, is("02:00"));
+        assertThat(time, is("05:00"));
     }
 
     @Test
@@ -176,13 +170,13 @@ public class DateUtilsTests {
     @Test
     public void isToday_withString_returnTrue() {
         boolean isToday = DateUtils.isToday(mTestDate_AppDateFormat);
-        assertThat(isToday, is(true));
+        assertTrue(isToday);
     }
 
     @Test
     public void isToday_withString_returnTrue2() {
         boolean isToday = DateUtils.isToday(mTestDate_AppDateFormat);
-        assertThat(isToday, is(true));
+        assertTrue(isToday);
     }
 
     @Test
@@ -191,7 +185,7 @@ public class DateUtilsTests {
         cal.add(Calendar.DAY_OF_MONTH, 1);
         String tomorrowDate = DateUtils.appDateFormat.format(cal.getTime());
         boolean isToday = DateUtils.isToday(tomorrowDate);
-        assertThat(isToday, is(false));
+        assertFalse(isToday);
     }
 
     @Test
@@ -199,18 +193,21 @@ public class DateUtilsTests {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_MONTH, 1);
         boolean isTomorrow = DateUtils.isTomorrow(mCurDate, cal.getTime());
-        assertThat(isTomorrow, is(false));
+        assertTrue(isTomorrow);
     }
 
     @Test
     public void isTomorrow_returnFalse() {
         boolean isTomorrow = DateUtils.isTomorrow(mCurDate, mCurDate);
-        assertThat(isTomorrow, is(true));
+        assertThat(isTomorrow, is(false));
     }
 
     @Test
     public void isFuture_returnTrue() {
-        boolean isFuture = DateUtils.isFuture(mTestDate_AppDateFormat);
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DAY_OF_MONTH, 1);
+        String tomorrowDate = DateUtils.appDateFormat.format(cal.getTime());
+        boolean isFuture = DateUtils.isFuture(tomorrowDate);
         assertTrue(isFuture);
     }
 
@@ -237,7 +234,7 @@ public class DateUtilsTests {
 
     @Test
     public void getLastMonthDate_success() {
-        String lastMonth = "22/12/2015";
+        String lastMonth = "28/12/2015";
         String returnedMonth = DateUtils.getLastMonthDate();
         assertThat(lastMonth, is(returnedMonth));
     }
@@ -245,7 +242,7 @@ public class DateUtilsTests {
     @Test
     public void getTodayDate_success() {
         String todayDate = DateUtils.getTodaysDate();
-        assertThat(todayDate, is(mTestDate_AppDateFormat));
+        assertThat(todayDate, is(mTestDate_DisplayFormat));
     }
 
     @Test
@@ -260,7 +257,7 @@ public class DateUtilsTests {
     @Test
     public void getDaysString_englishShort() {
         String[] weekDays = new String[]{
-                "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"
+                "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
         };
         String[] returnedWeekDays = DateUtils.getDaysString(true);
         assertThat(weekDays, is(returnedWeekDays));
@@ -297,7 +294,7 @@ public class DateUtilsTests {
 
     @Test
     public void getWeekNumberFromDateString_null() {
-        int week = DateUtils.getWeekNumberFromDateString(null);
+        int week = DateUtils.getWeekNumberFromDateString("");
         assertNull(week);
     }
 

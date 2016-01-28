@@ -209,7 +209,7 @@ public class DateUtils {
      * @return true/false
      */
     public static boolean isFuture(String dateString) {
-        Date date = null;
+        Date date;
         try {
             date = getDateFromString(dateString);
         } catch (ParseException e) {
