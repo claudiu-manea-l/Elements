@@ -234,7 +234,7 @@ public class DateUtilsTests {
 
     @Test
     public void getLastMonthDate_success() {
-        String lastMonth = "02/01/2016";
+        String lastMonth = "29/12/2015";
         String returnedMonth = DateUtils.getLastMonthDate();
         assertThat(lastMonth, is(returnedMonth));
     }

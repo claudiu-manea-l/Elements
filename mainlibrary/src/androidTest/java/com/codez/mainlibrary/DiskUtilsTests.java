@@ -1,4 +1,4 @@
-package com.codez.mainlibrary.utilitiy_classes_tests;
+package com.codez.mainlibrary;
 
 import android.test.suitebuilder.annotation.SmallTest;
 
