@@ -247,7 +247,6 @@ public class DateUtilsTests {
         assertThat(todayDate, is(mTestDate_DisplayFormat));
     }
 
-    @Test
     public void getTomorrowsDate_success() {
         Calendar cal = Calendar.getInstance();
         cal.setTime(mCurDate);
