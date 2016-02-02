@@ -73,7 +73,6 @@ public class OtherUtilsTests {
         assertThat(testString, is("N/A"));
     }
 
-    @Test
     public void emptyStringCheck() {
         String testString = OtherUtils.checkNull("Test String");
         assertThat(testString, is("Test String"));
