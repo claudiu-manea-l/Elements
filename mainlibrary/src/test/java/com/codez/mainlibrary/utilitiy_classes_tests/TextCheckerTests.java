@@ -7,6 +7,7 @@ import com.codez.mainlibrary.utilities.TextChecker;
 
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -23,7 +24,7 @@ public class TextCheckerTests {
     public String mSpecialCharacters;
 
     @Before
-    public void initTestStrings(){
+    public void initTestStrings() {
         mNumeric = "1234567890";
         mPersonName = "John Doe";
         mSpecialCharacters = "very.“(),:;<>[]”.VERY.“very@\\\\ \"very”.unusual---string";
@@ -61,22 +62,22 @@ public class TextCheckerTests {
     }
 
     @Test
-    public void hasIllegalChars_ReturnsTrue(){
+    public void hasIllegalChars_ReturnsTrue() {
         assertTrue(TextChecker.hasIlegalChars(mSpecialCharacters));
     }
 
     @Test
-    public void hasIllegalChars_ReturnsFalse(){
+    public void hasIllegalChars_ReturnsFalse() {
         assertFalse(TextChecker.hasIlegalChars(mAlphaNumeric));
     }
 
     @Test
-    public void isNumeric_ReturnsTrue(){
+    public void isNumeric_ReturnsTrue() {
         assertTrue(TextChecker.isNumeric(mNumeric));
     }
 
     @Test
-    public void isNumeric_ReturnsFalse(){
+    public void isNumeric_ReturnsFalse() {
         assertFalse(TextChecker.isNumeric(mAlphaNumeric));
     }
 
@@ -106,27 +107,27 @@ public class TextCheckerTests {
     }
 
     @Test
-    public void checkText_PhoneNumber_ReturnTrue(){
+    public void checkText_PhoneNumber_ReturnTrue() {
         assertTrue(TextChecker.checkText(mNumeric, InputType.TYPE_CLASS_PHONE));
     }
 
     @Test
-    public void checkText_PhoneNumber_ReturnFalse(){
+    public void checkText_PhoneNumber_ReturnFalse() {
         assertFalse(TextChecker.checkText(mAlphaNumeric, InputType.TYPE_CLASS_PHONE));
     }
 
     @Test
-    public void checkText_PersonName_ReturnTrue(){
+    public void checkText_PersonName_ReturnTrue() {
         assertTrue(TextChecker.checkText(mPersonName, InputType.TYPE_TEXT_VARIATION_PERSON_NAME));
     }
 
     @Test
-    public void checkText_PersonName_ReturnFalse(){
+    public void checkText_PersonName_ReturnFalse() {
         assertFalse(TextChecker.checkText(mSpecialCharacters, InputType.TYPE_TEXT_VARIATION_PERSON_NAME));
     }
 
     @Test
-    public void checkText_PostalAddress_ReturnTrue(){
+    public void checkText_PostalAddress_ReturnTrue() {
         assertTrue(TextChecker.checkText(mAlphaNumeric, InputType.TYPE_TEXT_VARIATION_POSTAL_ADDRESS));
     }
 }
