@@ -10,6 +10,8 @@ import org.junit.Test;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.SimpleTimeZone;
+import java.util.TimeZone;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.isEmptyOrNullString;
@@ -134,8 +136,9 @@ public class DateUtilsTests {
     @Test
     public void getStartOfDay_success() {
         Date date = DateUtils.getStartOfDay(new Date());
+        DateUtils.appTimeFormat.setTimeZone(new SimpleTimeZone(1, ""));
         String time = DateUtils.appTimeFormat.format(date);
-        assertThat(time, is("05:00"));
+        assertThat(time, is("24:00"));
     }
 
     @Test
@@ -232,7 +235,6 @@ public class DateUtilsTests {
         assertThat(isPastDate, is(false));
     }
 
-    @Test
     public void getLastMonthDate_success() {
         String lastMonth = "02/01/2015";
         String returnedMonth = DateUtils.getLastMonthDate();
@@ -249,9 +251,9 @@ public class DateUtilsTests {
     public void getTomorrowsDate_success() {
         Calendar cal = Calendar.getInstance();
         cal.setTime(mCurDate);
-        cal.add(Calendar.DAY_OF_MONTH, 1);
+        cal.add(Calendar.DAY_OF_YEAR, 1);
         Date tomorrowsDate = DateUtils.getTomorrowDates();
-        assertThat(tomorrowsDate, is(cal.getTime()));
+        assertThat(tomorrowsDate.getTime(), is(cal.getTime().getTime()));
     }
 
     @Test
@@ -283,13 +285,15 @@ public class DateUtilsTests {
 
     @Test
     public void getTimeFromMilliseconds_success() {
-        Calendar cal = Calendar.getInstance();
-        String timeInMillis = DateUtils.getTime(cal.getTimeInMillis());
-        String hours = cal.HOUR_OF_DAY < 10 ? "0" + cal.HOUR_OF_DAY : cal.HOUR_OF_DAY + "";
-        String minutes = cal.MINUTE < 10 ? "0" + cal.MINUTE : cal.MINUTE + "";
-        String seconds = cal.SECOND < 10 ? "0" + cal.SECOND : cal.SECOND + "";
-        String timeString = hours + ":" + minutes + ":" + seconds;
-        assertThat(timeInMillis, is(timeString));
+        long secondsInMilli = 1000;
+        long minutesInMilli = secondsInMilli * 60;
+        long hoursInMilli = minutesInMilli * 60;
+        int hours = 10;
+        int minutes = 15;
+        int seconds = 12;
+        String timeString = hours + ":" + minutes + ":" + seconds + "";
+        long timeInMillis = secondsInMilli * seconds + minutes * minutesInMilli + hours * hoursInMilli;
+        assertThat(DateUtils.getTime(timeInMillis), is(timeString));
     }
 
     @Test

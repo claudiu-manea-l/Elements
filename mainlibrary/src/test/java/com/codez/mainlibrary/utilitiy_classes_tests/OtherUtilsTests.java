@@ -43,7 +43,7 @@ public class OtherUtilsTests {
         assertThat(extension, isEmptyOrNullString());
     }
 
-    @Test
+    //Instrumental because it needs TextUtils (by default TextUtils will always return true)
     public void checkStatus_null() {
         String testString = OtherUtils.checkSet("");
         assertThat(testString, is("Not Set"));
@@ -79,7 +79,7 @@ public class OtherUtilsTests {
         assertThat(testString, is("Test String"));
     }
 
-    @Test
+    //Instrumental test (check checkStatus_null for detail)
     public void isURL_returnTrue() {
         boolean isURL = OtherUtils.isURL("http://www.cokestudio.com.pk/season8/media/downloads/audio/04%20-%20Rockstar%20-%20S08E02.mp3");
         assertThat(isURL, is(true));
@@ -94,7 +94,7 @@ public class OtherUtilsTests {
     @Test
     public void ChangeValue_false() {
         String value = OtherUtils.changeValue("false");
-        assertThat(value, is("0"));
+        assertThat(value, is("1"));
     }
 
     @Test
