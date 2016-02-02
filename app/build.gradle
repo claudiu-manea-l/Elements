@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.github.triplet.play'
 
 android {
     compileSdkVersion 23
@@ -8,8 +9,8 @@ android {
         applicationId "com.codez.elements"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -49,4 +50,12 @@ dependencies {
     androidTestCompile 'com.android.support.test:runner:0.4.1'
     androidTestCompile 'com.android.support.test:rules:0.4.1'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
+}
+
+play {
+    track = 'beta'
+    jsonFile = file('client_secret.json')
+    serviceAccountEmail = 'claudiu@elementslib.iam.gserviceaccount.com'
+    pk12File = file('ElementsLib-9f1682588355.p12')
+
 }
