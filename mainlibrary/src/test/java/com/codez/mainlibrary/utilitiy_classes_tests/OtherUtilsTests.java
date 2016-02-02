@@ -82,13 +82,13 @@ public class OtherUtilsTests {
     @Test
     public void isURL_returnTrue() {
         boolean isURL = OtherUtils.isURL("http://www.cokestudio.com.pk/season8/media/downloads/audio/04%20-%20Rockstar%20-%20S08E02.mp3");
-        assertTrue(isURL);
+        assertThat(isURL, is(true));
     }
 
     @Test
     public void isURL_returnFalse() {
         boolean isURL = OtherUtils.isURL("cokestudio");
-        assertFalse(isURL);
+        assertThat(isURL, is(false));
     }
 
     @Test
@@ -106,13 +106,13 @@ public class OtherUtilsTests {
     @Test
     public void getBoolean_zero() {
         boolean value = OtherUtils.getBoolean("0");
-        assertFalse(value);
+        assertThat(value, is(false));
     }
 
     @Test
     public void getBoolean_one() {
         boolean value = OtherUtils.getBoolean("1");
-        assertTrue(value);
+        assertThat(value, is(true));
     }
 
 }

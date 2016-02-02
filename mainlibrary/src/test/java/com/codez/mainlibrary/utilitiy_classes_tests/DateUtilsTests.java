@@ -41,7 +41,7 @@ public class DateUtilsTests {
     @Test
     public void changeFormat_nulls() {
         String date = DateUtils.changeFormat(null, null, null);
-        assertNull(date);
+        assertThat(date, isEmptyOrNullString());
     }
 
     @Test
@@ -62,7 +62,7 @@ public class DateUtilsTests {
     @Test
     public void convertDisplayDate_null() {
         String testDate = DateUtils.convertDisplayDate(null);
-        assertNull(testDate);
+        assertThat(testDate, isEmptyOrNullString());
     }
 
     @Test
@@ -74,7 +74,7 @@ public class DateUtilsTests {
     @Test
     public void formatDateToDisplay_null() {
         String testDate = DateUtils.formatDateToDisplay(null);
-        assertNull(testDate);
+        assertThat(testDate, isEmptyOrNullString());
     }
 
     @Test
@@ -170,13 +170,13 @@ public class DateUtilsTests {
     @Test
     public void isToday_withString_returnTrue() {
         boolean isToday = DateUtils.isToday(mTestDate_AppDateFormat);
-        assertTrue(isToday);
+        assertThat(isToday, is(true));
     }
 
     @Test
     public void isToday_withString_returnTrue2() {
         boolean isToday = DateUtils.isToday(mTestDate_AppDateFormat);
-        assertTrue(isToday);
+        assertThat(isToday, is(true));
     }
 
     @Test
@@ -185,7 +185,7 @@ public class DateUtilsTests {
         cal.add(Calendar.DAY_OF_MONTH, 1);
         String tomorrowDate = DateUtils.appDateFormat.format(cal.getTime());
         boolean isToday = DateUtils.isToday(tomorrowDate);
-        assertFalse(isToday);
+        assertThat(isToday, is(false));
     }
 
     @Test
@@ -193,7 +193,7 @@ public class DateUtilsTests {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_MONTH, 1);
         boolean isTomorrow = DateUtils.isTomorrow(mCurDate, cal.getTime());
-        assertTrue(isTomorrow);
+        assertThat(isTomorrow, is(true));
     }
 
     @Test
@@ -208,13 +208,13 @@ public class DateUtilsTests {
         cal.add(Calendar.DAY_OF_MONTH, 1);
         String tomorrowDate = DateUtils.appDateFormat.format(cal.getTime());
         boolean isFuture = DateUtils.isFuture(tomorrowDate);
-        assertTrue(isFuture);
+        assertThat(isFuture, is(true));
     }
 
     @Test
     public void isFuture_returnFalse() {
         boolean isFuture = DateUtils.isFuture(mTestDate_AppDateFormat);
-        assertFalse(isFuture);
+        assertThat(isFuture, is(false));
     }
 
     @Test
@@ -223,18 +223,18 @@ public class DateUtilsTests {
         cal.setTime(mCurDate);
         cal.add(Calendar.DATE, -1);
         boolean isPastDate = DateUtils.isPastDate(DateUtils.appDateFormat.format(cal.getTime()));
-        assertTrue(isPastDate);
+        assertThat(isPastDate, is(true));
     }
 
     @Test
     public void isPastDate_returnFalse() {
         boolean isPastDate = DateUtils.isPastDate(mTestDate_AppDateFormat);
-        assertFalse(isPastDate);
+        assertThat(isPastDate, is(false));
     }
 
     @Test
     public void getLastMonthDate_success() {
-        String lastMonth = "28/12/2015";
+        String lastMonth = "29/12/2015";
         String returnedMonth = DateUtils.getLastMonthDate();
         assertThat(lastMonth, is(returnedMonth));
     }
@@ -295,7 +295,7 @@ public class DateUtilsTests {
     @Test
     public void getWeekNumberFromDateString_null() {
         int week = DateUtils.getWeekNumberFromDateString("");
-        assertNull(week);
+        assertThat(week, is(0));
     }
 
     @Test

@@ -392,7 +392,7 @@ public class DateUtils {
             //e.printStackTrace();
         }
         if (mDate != null) {
-            getWeekNumberFromDate(mDate);
+            return getWeekNumberFromDate(mDate);
         }
         return 0;
     }
