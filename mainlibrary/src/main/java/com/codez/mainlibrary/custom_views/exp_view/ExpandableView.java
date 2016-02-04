@@ -17,16 +17,18 @@ import com.codez.mainlibrary.custom_views.TextViewPlus;
 
 import de.greenrobot.event.EventBus;
 
+//TODO Add default animation for closing/opening the view as well as support for custom animation
 /**
- * Created by Eptron on 12/16/2015.
+ * Class which supports opening and collapsing, it supports custom views that can be extended
+ * The views added to this view can return Data as well which can be caught via the
+ * IHasData interface
+ * Created by Claudiu on 12/16/2015.
  */
 public class ExpandableView<T> extends LinearLayout implements View.OnClickListener {
 
     boolean isExpanded = true;
     public int mResId = -1;
     private boolean isViewInflated = false;
-
-    //private View mView;
     private IHasData<T> mIntCalls;
     private FrameLayout mContainerView;
     private TextViewPlus mTitle;
@@ -45,6 +47,11 @@ public class ExpandableView<T> extends LinearLayout implements View.OnClickListe
         super(context);
     }
 
+    /**
+     * Attribute for xml to set the title of the view
+     * @param context
+     * @param attrs
+     */
     private void setCustomTitle(Context context, AttributeSet attrs) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ExpandableView);
         String customTitle = a.getString(R.styleable.ExpandableView_customTitle);
@@ -74,17 +81,27 @@ public class ExpandableView<T> extends LinearLayout implements View.OnClickListe
         unregisterEventBus();
     }
 
+    /**
+     * Registers to the EventBus
+     */
     private void registerEventBus() {
         if (!EventBus.getDefault().isRegistered(this))
             EventBus.getDefault().register(this);
     }
 
+    /**
+     * Unregisters from the EventBus
+     */
     private void unregisterEventBus() {
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
     }
 
+    /**
+     * Disable the child views of this layout, In order for this to function
+     * The ChildrenViews need to implement IDisableable interface
+     */
     public void disableView() {
         if (mIntCalls != null)
             mIntCalls.disableView();
@@ -94,6 +111,12 @@ public class ExpandableView<T> extends LinearLayout implements View.OnClickListe
         }
     }
 
+    /**
+     * Assign the ID of a xml layout view which will be used for the main container
+     * @param title the title to be set to the view
+     * @param resId the resource identifier via R.java to be used to inflate the
+     *              main container view
+     */
     public void setTitleAndViewResource(String title, int resId) {
         setTitle(title);
         mResId = resId;
@@ -102,10 +125,18 @@ public class ExpandableView<T> extends LinearLayout implements View.OnClickListe
         }
     }
 
+    /**
+     * Sets the title of this view
+     * @param title the title to be set
+     */
     public void setTitle(String title) {
         mTitle.setText(title);
     }
 
+    /**
+     * Inflates the view provided via the resource id provided via
+     * setTitleAndViewResource
+     */
     private void inflateView() {
         View mView = inflate(getContext(), mResId, null);
         if (mView instanceof IHasData) {
@@ -115,6 +146,10 @@ public class ExpandableView<T> extends LinearLayout implements View.OnClickListe
         isViewInflated = true;
     }
 
+    /**
+     * Sets an already inflated @View to the mainContainer
+     * @param view the view to be set
+     */
     public void setInflatedView(View view) {
         //mView = view;
         if (view instanceof IHasData) {
@@ -124,6 +159,11 @@ public class ExpandableView<T> extends LinearLayout implements View.OnClickListe
         isViewInflated = true;
     }
 
+    /**
+     * Returns the data persisting in the mainContainer (in order for this to work
+     * the main @View class inflated in the mainContainer has to implement @IHasData
+     * @return the data present in the mainContainer
+     */
     public T getObjectData() {
         if (mIntCalls != null) {
             return mIntCalls.getGenericData();
@@ -133,6 +173,12 @@ public class ExpandableView<T> extends LinearLayout implements View.OnClickListe
         return null;
     }
 
+    /**
+     * Notifies the mainContaier View to load it's data.
+     * In order for this to work the View inflated in the mainContainer has to
+     * implement the IHasData interface
+     * @param event
+     */
     public void onEventAsync(LoadDataEvent event) {
         if (mIntCalls != null) {
             Log.i("ExpandableView", "LoadingData");
@@ -147,6 +193,9 @@ public class ExpandableView<T> extends LinearLayout implements View.OnClickListe
         }
     }
 
+    /**
+     * Initialises the State (if this is a recreation)
+     */
     private void initState() {
         if (isExpanded) {
             openContainer();
@@ -155,6 +204,9 @@ public class ExpandableView<T> extends LinearLayout implements View.OnClickListe
         }
     }
 
+    /**
+     * Switch the states between Opened and Closed
+     */
     private void switchState() {
         if (isExpanded) {
             closeContainer();
@@ -163,6 +215,9 @@ public class ExpandableView<T> extends LinearLayout implements View.OnClickListe
         }
     }
 
+    /**
+     * Opens the mainContainer
+     */
     private void openContainer() {
         isExpanded = true;
         if (mContainerView.getVisibility() != VISIBLE) {
@@ -172,6 +227,9 @@ public class ExpandableView<T> extends LinearLayout implements View.OnClickListe
 
     }
 
+    /**
+     * Closes the mainContainer
+     */
     private void closeContainer() {
         isExpanded = false;
         if (mContainerView.getVisibility() != GONE) {
@@ -199,70 +257,18 @@ public class ExpandableView<T> extends LinearLayout implements View.OnClickListe
         super.onRestoreInstanceState(state);
     }
 
+    /**
+     * Event Object sent to this View from the parent(Activity/Fragment/Other Custom View
+     * to instantiate loadData of the mainContainer (in order for this to work
+     * the main @View class inflated in the mainContainer has to implement @IHasData
+     */
     public static class LoadDataEvent {
         private int ID;
 
+        public LoadDataEvent(){}
         public LoadDataEvent(int id) {
             ID = id;
         }
     }
 }
-    /*
-    @Override
-    protected Parcelable onSaveInstanceState() {
-        //begin boilerplate code that allows parent classes to save state
-        Parcelable superState = super.onSaveInstanceState();
-
-        ViewSavedState ss = new ViewSavedState(superState);
-        //end
-        ss.isExpanded = this.isExpanded;
-        return ss;
-
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Parcelable state) {
-        super.onRestoreInstanceState(state);
-        if (!(state instanceof ViewSavedState)) {
-            super.onRestoreInstanceState(state);
-            return;
-        }
-        ViewSavedState ss = (ViewSavedState) state;
-        super.onRestoreInstanceState(ss.getSuperState());
-
-        this.isExpanded = ss.isExpanded;
-    }
-
-    static class ViewSavedState extends BaseSavedState {
-        boolean isExpanded;
-
-        ViewSavedState(Parcelable superState) {
-            super(superState);
-        }
-
-        private ViewSavedState(Parcel in) {
-            super(in);
-            this.isExpanded = in.readInt() > 0;
-        }
-
-        @Override
-        public void writeToParcel(Parcel out, int flags) {
-            super.writeToParcel(out, flags);
-            int stateToSave = (isExpanded) ? 1 : 0;
-            out.writeInt(stateToSave);
-        }
-
-        //required field that makes Parcelables from a Parcel
-        public static final Parcelable.Creator<ViewSavedState> CREATOR =
-                new Parcelable.Creator<ViewSavedState>() {
-                    public ViewSavedState createFromParcel(Parcel in) {
-                        return new ViewSavedState(in);
-                    }
-
-                    public ViewSavedState[] newArray(int size) {
-                        return new ViewSavedState[size];
-                    }
-                };
-    }
-*/
 

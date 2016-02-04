@@ -4,7 +4,8 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
 /**
- * Created by Eptron on 9/17/2015.
+ * Simple Dialog template to already set the Style and Theme to the default ones
+ * Created by Claudiu on 9/17/2015.
  */
 public class DialogTemplate extends DialogFragment{
 

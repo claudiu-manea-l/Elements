@@ -3,10 +3,13 @@ package com.codez.mainlibrary.custom_views.dialogs;
 import android.os.Bundle;
 import android.view.View;
 
+import com.codez.mainlibrary.custom_views.dialogs.time_picker.MyTimePicker;
+
 /**
- * Created by eptron on 14/04/2015.
+ * Used to help in dismissing the Dialog onOrientationChange
+ * Created by Claudiu on 14/04/2015.
  */
-public class DialogWithCallbacks extends DialogTemplate {
+public class SingleOrientationDialog extends DialogTemplate {
 
     protected int oldOrientation;
     protected int currOrientation;

@@ -5,16 +5,18 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.widget.TimePicker;
 
-import com.codez.mainlibrary.custom_views.dialogs.DialogWithCallbacks;
+import com.codez.mainlibrary.custom_views.dialogs.SingleOrientationDialog;
 
 import java.util.Calendar;
 
 import de.greenrobot.event.EventBus;
 
 /**
+ * Used for (@TimePickerDialog) but instead of registering for a callback
+ * to get the time set, the data will be delivered via EventBus (Event = @TimeSetEvent)
  * Created by eptron on 16/06/2015.
  */
-public class MyTimePicker extends DialogWithCallbacks
+public class MyTimePicker extends SingleOrientationDialog
         implements TimePickerDialog.OnTimeSetListener {
 
     public static final String TAG = "time_picker";
