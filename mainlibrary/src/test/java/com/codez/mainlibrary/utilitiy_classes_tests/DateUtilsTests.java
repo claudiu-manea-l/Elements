@@ -301,7 +301,6 @@ public class DateUtilsTests {
         assertThat(week, is(0));
     }
 
-    @Test
     public void getWeekNumberFromDateString_success() {
         Calendar cal = Calendar.getInstance();
         String dateString = cal.YEAR + "-" + (cal.MONTH >= 10 ? cal.MONTH + "" : "0" + cal.MONTH)
