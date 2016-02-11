@@ -1,17 +1,17 @@
 <resources>
     <string name="app_name">MainLibrary</string>
-    <string name="common.empty.list">No items present in the list!</string>
-    <string name="common.empty.item">No item</string>
+    <string name="common.empty.list">Geen items in de lijst!</string>
+    <string name="common.empty.item">Geen item</string>
 
-    <string name="common.error.gps">The GPS has not been started or is still trying to initialize</string>
-    <string name="common.error.internet">There is no Internet connection present</string>
-    <string name="common.error.unkown">Unknown error occurred</string>
-    <string name="common.error.waypoint">One or more waypoints not found.</string>
-    <string name="common.error.other">Other error occurred</string>
-    <string name="common.error.data">Error retrieving data</string>
-    <string name="common.error.not_supported">This device is not supported.</string>
-    <string name="common.error.gms_not_installed">Google play Services not installed, Maps functionality disabled.</string>
+    <string name="common.error.gps">De GPS is niet gestart of is nog steeds bezig om te initialiseren</string>
+    <string name="common.error.internet">Er is geen internetverbinding aanwezig</string>
+    <string name="common.error.unkown">Onbekende fout opgetreden</string>
+    <string name="common.error.waypoint">E&#233;n of meer waypoints niet gevonden.</string>
+    <string name="common.error.other">Andere fout opgetreden</string>
+    <string name="common.error.data">Fout bij het ophalen van gegevens</string>
+    <string name="common.error.not_supported">Dit apparaat wordt niet ondersteund.</string>
+    <string name="common.error.gms_not_installed">Google Play-services niet is ge&#239;nstalleerd, Maps functionaliteit uitgeschakeld.</string>
 
-    <string name="common.error.backend">Error occurred on Back-End</string>
-    <string name="common.notification.internet">Connected to WiFi</string>
+    <string name="common.error.backend">Fout opgetreden in Back-End</string>
+    <string name="common.notification.internet">Aangesloten op WiFi</string>
 </resources>

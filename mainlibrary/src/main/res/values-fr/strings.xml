@@ -1,17 +1,17 @@
 <resources>
     <string name="app_name">MainLibrary</string>
-    <string name="common.empty.list">No items present in the list!</string>
-    <string name="common.empty.item">No item</string>
+    <string name="common.empty.list">Aucun &#233;l&#233;ment pr&#233;sent dans la liste!</string>
+    <string name="common.empty.item">Pas d\'objet</string>
 
-    <string name="common.error.gps">The GPS has not been started or is still trying to initialize</string>
-    <string name="common.error.internet">There is no Internet connection present</string>
-    <string name="common.error.unkown">Unknown error occurred</string>
-    <string name="common.error.waypoint">One or more waypoints not found.</string>
-    <string name="common.error.other">Other error occurred</string>
-    <string name="common.error.data">Error retrieving data</string>
-    <string name="common.error.not_supported">This device is not supported.</string>
-    <string name="common.error.gms_not_installed">Google play Services not installed, Maps functionality disabled.</string>
+    <string name="common.error.gps">Le GPS n\'a pas &#233;t&#233; lanc&#233;e ou elle est encore en train d\'initialiser</string>
+    <string name="common.error.internet">Il n\'y a pas de connexion Internet pr&#233;sente</string>
+    <string name="common.error.unkown">Une erreur inconnue s\'est produite</string>
+    <string name="common.error.waypoint">Un ou plusieurs waypoints introuvables.</string>
+    <string name="common.error.other">Autre erreur</string>
+    <string name="common.error.data">Erreur r&#233;cup&#233;ration des donn&#233;es</string>
+    <string name="common.error.not_supported">Ce dispositif est pas pris en charge.</string>
+    <string name="common.error.gms_not_installed">Services Google Play pas install&#233;s, la fonctionnalit&#233; Plans d&#233;sactiv&#233;.</string>
 
-    <string name="common.error.backend">Error occurred on Back-End</string>
-    <string name="common.notification.internet">Connected to WiFi</string>
+    <string name="common.error.backend">Une erreur est survenue sur le Back-End</string>
+    <string name="common.notification.internet">Connect&#233; au WiFi</string>
 </resources>
