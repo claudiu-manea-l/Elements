@@ -24,7 +24,7 @@ android {
         applicationId "com.codez.elements"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 7
+        versionCode 9
         versionName "1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -48,7 +48,7 @@ android {
             minifyEnabled false
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            ext.betaDistributionReleaseNotes="Release Notes for this build."
+            ext.betaDistributionReleaseNotes="New release notes"
             ext.betaDistributionGroupAliases="sms-testers"
         }
     }
