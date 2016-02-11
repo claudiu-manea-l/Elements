@@ -1,0 +1,11 @@
+languages:
+    - English:  en
+    - Dutch:    nl
+    - French:   fr
+
+default-language: en
+
+sources:
+    -   name: All Strings
+        url: https://spreadsheets.google.com/feeds/list/1C0Hnb6DQUHdGJbU1p_Bvm9wSKNajiQLXwqEErjEKkOU/2/public/values?alt=json		
+   
