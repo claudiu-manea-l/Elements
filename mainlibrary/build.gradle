@@ -45,6 +45,13 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
+
+    /*task copyResDirectoryToClasses(type: Copy){
+        from "${projectDir}/src/androidTest/res"
+        into "${buildDir}/intermediates/classes/test/debug/res"
+    }
+
+    assembleDebug.dependsOn(copyResDirectoryToClasses)*/
 }
 
 project.gradle.taskGraph.whenReady {
@@ -85,4 +92,6 @@ dependencies {
     compile('com.loopj.android:android-async-http:1.4.9') {
         exclude group: 'com.google.android', module: 'support-v4'
     }
+
+
 }
