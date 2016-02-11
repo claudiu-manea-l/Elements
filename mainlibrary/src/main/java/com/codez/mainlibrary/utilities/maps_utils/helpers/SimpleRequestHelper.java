@@ -60,7 +60,7 @@ public class SimpleRequestHelper extends RequestHelper {
             addRouteMarkers(route.getLegs());
             mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(mBuilder.build(), 100));
         } else {
-            Toast.makeText(mContext, mContext.getString(R.string.map_waypoint_error), Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, mContext.getString(R.string.common_error_waypoint), Toast.LENGTH_SHORT).show();
         }
     }
 

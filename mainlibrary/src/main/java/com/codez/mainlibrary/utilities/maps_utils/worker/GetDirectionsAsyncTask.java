@@ -88,7 +88,7 @@ public class GetDirectionsAsyncTask extends AsyncTask<String, Object, ArrayList<
     }
 
     private void processException() {
-        Toast.makeText(mContext, mContext.getString(R.string.error_retrieving_data), Toast.LENGTH_SHORT).show();
+        Toast.makeText(mContext, mContext.getString(R.string.common_error_data), Toast.LENGTH_SHORT).show();
     }
 
     //Callback to the fragment who started this worker with the results

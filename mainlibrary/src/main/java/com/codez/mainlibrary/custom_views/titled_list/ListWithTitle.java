@@ -27,7 +27,7 @@ public class ListWithTitle<T> extends LinearLayout {
 
     public ListWithTitle(Context context, AttributeSet attrs) {
         super(context, attrs);
-        EMPTY_STRING = context.getString(R.string.empty_item);
+        EMPTY_STRING = context.getString(R.string.common_empty_item);
     }
 
     @Override

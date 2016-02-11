@@ -12,6 +12,8 @@ import android.widget.ListView;
 import com.codez.elements.activities.ExpandableViewActivity;
 import com.codez.mainlibrary.BaseActivity;
 
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import java.util.List;
 
 /**
@@ -27,6 +29,7 @@ public class SimpleActivity extends BaseActivity implements AdapterView.OnItemCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.main_activity);
         initListView();
 

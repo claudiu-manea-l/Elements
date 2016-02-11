@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/normal_margin"
             android:gravity="center_horizontal"
-            android:text="@string/empty_item"
+            android:text="@string/common.empty.item"
             android:visibility="gone" />
 
     </LinearLayout>

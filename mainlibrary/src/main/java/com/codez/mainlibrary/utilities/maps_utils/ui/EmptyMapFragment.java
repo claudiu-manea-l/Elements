@@ -36,9 +36,9 @@ public class EmptyMapFragment extends Fragment {
         TextView errorTV = (TextView) view.findViewById(R.id.error_message);
 
         int error = getArguments().getInt(ERROR_ARGS);
-        String gps_error = getResources().getString(R.string.no_gps_error);
-        String internet_error = getResources().getString(R.string.no_internet_error);
-        String unknown_error = getResources().getString(R.string.unknown_error);
+        String gps_error = getResources().getString(R.string.common_error_gps);
+        String internet_error = getResources().getString(R.string.common_error_internet);
+        String unknown_error = getResources().getString(R.string.common_error_unkown);
         String other_error = "";
         switch (error) {
             case 0:

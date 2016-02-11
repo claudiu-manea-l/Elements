@@ -34,7 +34,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void onEventMainThread(ConnectedToWifi event) {
-        Toast.makeText(this, getString(R.string.wifi_connection), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.common_notification_internet), Toast.LENGTH_SHORT).show();
         onConnectedToWifi();
     }
 
@@ -43,7 +43,7 @@ public class BaseActivity extends AppCompatActivity {
         if (DEBUG)
             error = buildErrorString(event);
         else {
-            error = getString(R.string.error_server);
+            error = getString(R.string.common_error_backend);
             error = error + "\n" + event.getError();
         }
         Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
