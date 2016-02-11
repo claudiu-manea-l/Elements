@@ -7,15 +7,13 @@ import com.codez.mainlibrary.utilities.DateUtils;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.SimpleTimeZone;
-import java.util.TimeZone;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.isEmptyOrNullString;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 /**
  * Created by Eptron on 1/21/2016.
