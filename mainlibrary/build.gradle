@@ -45,13 +45,6 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
-
-    /*task copyResDirectoryToClasses(type: Copy){
-        from "${projectDir}/src/androidTest/res"
-        into "${buildDir}/intermediates/classes/test/debug/res"
-    }
-
-    assembleDebug.dependsOn(copyResDirectoryToClasses)*/
 }
 
 project.gradle.taskGraph.whenReady {

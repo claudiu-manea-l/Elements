@@ -1,18 +1,17 @@
 <resources>
     <string name="app_name">MainLibrary</string>
-    <string name="empty_list">No items present in the list!</string>
-    <string name="empty_item">No item</string>
+    <string name="common.empty.list">No items present in the list!</string>
+    <string name="common.empty.item">No item</string>
 
-    <string name="no_gps_error">The GPS has not been started or is still trying to initialize</string>
-    <string name="no_internet_error">There is no Internet connection present</string>
-    <string name="unknown_error">Unknown error occurred</string>
-    <string name="map_waypoint_error">One or more waypoints not found.</string>
-    <string name="error_message">Unknown error occurred</string>
-    <string name="other_error">Other error occurred</string>
-    <string name="error_retrieving_data">Error retrieving data</string>
-    <string name="device_not_supported">This device is not supported.</string>
-    <string name="gms_not_installed">Google play Services not installed, Maps functionality disabled.</string>
+    <string name="common.error.gps">The GPS has not been started or is still trying to initialize</string>
+    <string name="common.error.internet">There is no Internet connection present</string>
+    <string name="common.error.unkown">Unknown error occurred</string>
+    <string name="common.error.waypoint">One or more waypoints not found.</string>
+    <string name="common.error.other">Other error occurred</string>
+    <string name="common.error.data">Error retrieving data</string>
+    <string name="common.error.not_supported">This device is not supported.</string>
+    <string name="common.error.gms_not_installed">Google play Services not installed, Maps functionality disabled.</string>
 
-    <string name="error_server">Error occurred on Back-End</string>
-    <string name="wifi_connection">Connected to WiFi</string>
+    <string name="common.error.backend">Error occurred on Back-End</string>
+    <string name="common.notification.internet">Connected to WiFi</string>
 </resources>

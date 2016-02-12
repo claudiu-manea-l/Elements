@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MainLibrary</string>
+    <string name="common.empty.list">Geen items in de lijst!</string>
+    <string name="common.empty.item">Geen item</string>
+
+    <string name="common.error.gps">De GPS is niet gestart of is nog steeds bezig om te initialiseren</string>
+    <string name="common.error.internet">Er is geen internetverbinding aanwezig</string>
+    <string name="common.error.unkown">Onbekende fout opgetreden</string>
+    <string name="common.error.waypoint">E&#233;n of meer waypoints niet gevonden.</string>
+    <string name="common.error.other">Andere fout opgetreden</string>
+    <string name="common.error.data">Fout bij het ophalen van gegevens</string>
+    <string name="common.error.not_supported">Dit apparaat wordt niet ondersteund.</string>
+    <string name="common.error.gms_not_installed">Google Play-services niet is ge&#239;nstalleerd, Maps functionaliteit uitgeschakeld.</string>
+
+    <string name="common.error.backend">Fout opgetreden in Back-End</string>
+    <string name="common.notification.internet">Aangesloten op WiFi</string>
+</resources>
