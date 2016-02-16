@@ -1,4 +1,4 @@
-package com.codez.elements.restful_list.model;
+package com.codez.elements.temp;
 
 import android.content.ContentValues;
 import android.database.Cursor;

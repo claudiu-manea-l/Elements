@@ -10,10 +10,14 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 import com.codez.elements.activities.ExpandableViewActivity;
+import com.codez.elements.activities.RxListActivity;
+import com.codez.elements.activities.RxTryActivity;
 import com.codez.mainlibrary.BaseActivity;
 
 import com.crashlytics.android.Crashlytics;
+
 import io.fabric.sdk.android.Fabric;
+
 import java.util.List;
 
 /**
@@ -53,8 +57,10 @@ public class SimpleActivity extends BaseActivity implements AdapterView.OnItemCl
                 intent = new Intent(this, ExpandableViewActivity.class);
                 break;
             case REBUILDABLE:
+                intent = new Intent(this, RxTryActivity.class);
                 break;
             case RESTFUL:
+                intent = new Intent(this, RxListActivity.class);
                 break;
             case TITLED:
                 break;

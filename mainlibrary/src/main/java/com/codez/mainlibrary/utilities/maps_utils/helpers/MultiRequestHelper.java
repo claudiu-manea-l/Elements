@@ -4,16 +4,12 @@ import android.graphics.Color;
 import android.os.Handler;
 import android.util.Log;
 
-import com.codez.mainlibrary.restfulkit.RestController;
-import com.codez.mainlibrary.restfulkit.RestHandler;
-import com.codez.mainlibrary.restfulkit.SampleRestController;
-import com.codez.mainlibrary.utilities.OtherUtils;
+import com.codez.mainlibrary.restfulkit.SampleLoopjController;
 import com.codez.mainlibrary.utilities.maps_utils.MapDirections;
 import com.codez.mainlibrary.utilities.maps_utils.MapUtils;
 import com.codez.mainlibrary.utilities.maps_utils.MultipleDirCallEvent;
 import com.codez.mainlibrary.utilities.maps_utils.Waypoint;
 import com.codez.mainlibrary.utilities.maps_utils.gson_model.Leg;
-import com.codez.mainlibrary.utilities.maps_utils.model.MapsConstants;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
@@ -115,7 +111,7 @@ public class MultiRequestHelper extends RequestHelper {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                SampleRestController.getController(mContext)
+                SampleLoopjController.getController(mContext)
                         .getDirections(params, event);
 
             }

@@ -1,4 +1,4 @@
-package com.codez.mainlibrary.restfulkit;
+package com.codez.mainlibrary.restfulkit.loopj;
 
 import android.content.Context;
 import android.os.SystemClock;
@@ -25,7 +25,7 @@ import de.greenrobot.event.EventBus;
  * Handler class for JSON type HttpRequest and Response
  * Created by Claudiu on 19/05/2015.
  */
-public class RestHandler extends JsonHttpResponseHandler {
+public class LoopjHandler extends JsonHttpResponseHandler {
     private static final int SECONDS = 1000;
 
     public static final int TYPE_GET = 0;
@@ -34,11 +34,11 @@ public class RestHandler extends JsonHttpResponseHandler {
     public static final int TYPE_JSON = 3;
     private static final int SOCKET_TIMEOUT = 40 * SECONDS;
     //API URL -- Needs to be changed to the appropriate URL
-    public static String BASE_URL = RestController.BASE_URL;
-    public static boolean DEBUG = RestController.DEBUG;
+    public static String BASE_URL = LoopjController.BASE_URL;
+    public static boolean DEBUG = LoopjController.DEBUG;
     //Things needed for the Builder to execute calls
     private static AsyncHttpClient client = new AsyncHttpClient();
-    private RestController mController;
+    private LoopjController mController;
     private RequestParams mParams;
     private MainEvent mSuccessEvent;
     private MainEvent mFailureEvent;
@@ -55,7 +55,7 @@ public class RestHandler extends JsonHttpResponseHandler {
      * @param controller Controller that started this handler needed in order to post back
      *                   execution data to the controller
      */
-    public RestHandler(RestController controller) {
+    public LoopjHandler(LoopjController controller) {
         mController = controller;
         client.setTimeout(SOCKET_TIMEOUT);
     }
@@ -113,13 +113,13 @@ public class RestHandler extends JsonHttpResponseHandler {
             mSuccessEvent.parseJSON();
             mSuccessEvent.setRestCall(temp);
             EventBus.getDefault().post(mSuccessEvent);
-            if (DEBUG) Log.i("RestHandler", "Successful request  " + temp.getMethodCall());
+            if (DEBUG) Log.i("LoopjHandler", "Successful request  " + temp.getMethodCall());
         } else {
             mFailureEvent.setJSON(object);
             mFailureEvent.parseJSON();
             mFailureEvent.setRestCall(temp);
             EventBus.getDefault().post(mFailureEvent);
-            if (DEBUG) Log.i("RestHandler", "Failed request  " + temp.getMethodCall());
+            if (DEBUG) Log.i("LoopjHandler", "Failed request  " + temp.getMethodCall());
         }
     }
 
@@ -128,7 +128,7 @@ public class RestHandler extends JsonHttpResponseHandler {
      * and AsyncHttpClient
      */
     public static class Builder {
-        // RestHandler mHandler;
+        // LoopjHandler mHandler;
         MainEvent sSuccessEvent;
         MainEvent sFailureEvent;
         String sMethodCall;
@@ -142,7 +142,7 @@ public class RestHandler extends JsonHttpResponseHandler {
         /**
          * Sets the RequestParams (@RequestParams) for the request.
          *
-         * @param params The request parameters to be used for the RestHandler
+         * @param params The request parameters to be used for the LoopjHandler
          * @return this instance of the class for easier execution
          */
         public Builder setRequestParams(RequestParams params) {
@@ -196,7 +196,7 @@ public class RestHandler extends JsonHttpResponseHandler {
 
         /**
          * Sets the type of HttpCall to be executed (ex: GET,POST,PUT)
-         * types can be found under RestHandler.* (ex: RestHandler.TYPE_GET)
+         * types can be found under LoopjHandler.* (ex: LoopjHandler.TYPE_GET)
          *
          * @param type the type for the HttpCall
          * @return this instance of the class for easier execution
@@ -221,8 +221,8 @@ public class RestHandler extends JsonHttpResponseHandler {
             return this;
         }
 
-        public RestHandler create(RestController controller) {
-            RestHandler handler = new RestHandler(controller);
+        public LoopjHandler create(LoopjController controller) {
+            LoopjHandler handler = new LoopjHandler(controller);
             if (sSuccessEvent == null) {
                 sSuccessEvent = new SuccessfulRequest();
             }
@@ -241,20 +241,20 @@ public class RestHandler extends JsonHttpResponseHandler {
         }
 
         /**
-         * Builds the RestHandler and executes it with the build parameters set to the builder over
+         * Builds the LoopjHandler and executes it with the build parameters set to the builder over
          * Http.
          *
          * @param controller the controller executing this build
-         *                   Needed in order to post back from the RestHandler to the controller
+         *                   Needed in order to post back from the LoopjHandler to the controller
          *                   successes and failures for better tracking of the api calls
          */
-        public void build(RestController controller) {
-            RestHandler mHandler = create(controller);
+        public void build(LoopjController controller) {
+            LoopjHandler mHandler = create(controller);
             String url;
             if (!mHandler.mHasCustomUrl)
                 url = getAbsoluteUrl(mHandler.mMethodCall);
             else url = mHandler.mCustomUrl;
-            Log.i("RestHandler", "Executing url=" + url);
+            Log.i("LoopjHandler", "Executing url=" + url);
             switch (sType) {
                 case TYPE_GET:
                     client.get(url, mHandler.mParams, mHandler);
@@ -273,12 +273,12 @@ public class RestHandler extends JsonHttpResponseHandler {
             reset();
         }
 
-        public void build(RestHandler handler) {
+        public void build(LoopjHandler handler) {
             String url;
             if (!handler.mHasCustomUrl)
                 url = getAbsoluteUrl(handler.mMethodCall);
             else url = handler.mCustomUrl;
-            Log.i("RestHandler", "Executing url=" + url);
+            Log.i("LoopjHandler", "Executing url=" + url);
             switch (sType) {
                 case TYPE_GET:
                     client.get(url, handler.mParams, handler);

@@ -4,7 +4,7 @@ import android.graphics.Color;
 import android.widget.Toast;
 
 import com.codez.mainlibrary.R;
-import com.codez.mainlibrary.restfulkit.SampleRestController;
+import com.codez.mainlibrary.restfulkit.SampleLoopjController;
 import com.codez.mainlibrary.utilities.maps_utils.MapDirections;
 import com.codez.mainlibrary.utilities.maps_utils.MultipleDirCallEvent;
 import com.codez.mainlibrary.utilities.maps_utils.SuccessfulMapEvent;
@@ -47,7 +47,7 @@ public class SimpleRequestHelper extends RequestHelper {
     public boolean executeRequest() {
         RequestParams params = MultiRequestHelper.buildDirectionsParams(
                 mAddress, mAddress, mWaypoints, MODE, true);
-        return SampleRestController.getController(mContext).getDirections(params);
+        return SampleLoopjController.getController(mContext).getDirections(params);
     }
 
     public void onEventMainThread(SuccessfulMapEvent event) {

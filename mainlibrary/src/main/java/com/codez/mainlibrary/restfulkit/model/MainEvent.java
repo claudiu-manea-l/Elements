@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * Super class needed for all events to extend if they are to use the
- * RestController. Holds the JSONObject or JSONArray response from the
+ * LoopjController. Holds the JSONObject or JSONArray response from the
  * HttpCall
  * Created by Claudiu on 19/05/2015.
  */

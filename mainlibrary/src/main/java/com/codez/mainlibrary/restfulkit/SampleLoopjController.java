@@ -2,6 +2,8 @@ package com.codez.mainlibrary.restfulkit;
 
 import android.content.Context;
 
+import com.codez.mainlibrary.restfulkit.loopj.LoopjHandler;
+import com.codez.mainlibrary.restfulkit.loopj.LoopjController;
 import com.codez.mainlibrary.utilities.maps_utils.MultipleDirCallEvent;
 import com.codez.mainlibrary.utilities.maps_utils.SuccessfulMapEvent;
 import com.codez.mainlibrary.utilities.maps_utils.model.MapsConstants;
@@ -10,19 +12,19 @@ import com.loopj.android.http.RequestParams;
 /**
  * Created by Eptron on 1/18/2016.
  */
-public class SampleRestController extends RestController{
+public class SampleLoopjController extends LoopjController {
 
-    private static SampleRestController sInstance;
+    private static SampleLoopjController sInstance;
     private Context mContext;
 
-    private SampleRestController() {
+    private SampleLoopjController() {
     }
 
-    public static SampleRestController getController(Context context) {
+    public static SampleLoopjController getController(Context context) {
         if (sInstance == null) {
-            sInstance = new SampleRestController();
+            sInstance = new SampleLoopjController();
             sInstance.mContext = context;
-            sInstance.sBuilder = new RestHandler.Builder();
+            sInstance.sBuilder = new LoopjHandler.Builder();
             DEBUG = true;
         }
         return sInstance;
@@ -35,11 +37,11 @@ public class SampleRestController extends RestController{
 
     public boolean getDirections(RequestParams params, MultipleDirCallEvent event) {
         return doCustomRestCall(MapsConstants.DIR_URL, params,
-                RestHandler.TYPE_GET, event, null);
+                LoopjHandler.TYPE_GET, event, null);
     }
 
     public boolean getDirections(RequestParams params) {
         return doCustomRestCall(MapsConstants.DIR_URL, params,
-                RestHandler.TYPE_GET, new SuccessfulMapEvent(), null);
+                LoopjHandler.TYPE_GET, new SuccessfulMapEvent(), null);
     }
 }

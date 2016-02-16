@@ -25,8 +25,24 @@
                 android:value=".SimpleActivity" />
         </activity>
 
+        <activity
+            android:name=".activities.RxListActivity"
+            android:label="@string/app_name">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SimpleActivity" />
+        </activity>
+
+        <activity
+            android:name=".activities.RxTryActivity"
+            android:label="@string/app_name">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SimpleActivity" />
+        </activity>
+
         <provider
-            android:name=".restful_list.model.DataProvider"
+            android:name=".temp.DataProvider"
             android:authorities="com.codez.elements.demo"
             android:enabled="true"
             android:exported="false" />

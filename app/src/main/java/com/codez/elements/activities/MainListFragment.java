@@ -1,4 +1,4 @@
-package com.codez.elements.restful_list;
+package com.codez.elements.activities;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.codez.elements.db.tables.CStaffTable;
-import com.codez.elements.restful_list.model.DataProvider;
+import com.codez.elements.temp.DataProvider;
 import com.codez.mainlibrary.restful_list.lists.UpdatableSQList;
 
 /**

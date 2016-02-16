@@ -1,4 +1,4 @@
-package com.codez.mainlibrary.restfulkit;
+package com.codez.mainlibrary.restfulkit.loopj;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -21,15 +21,15 @@ import cz.msebera.android.httpclient.entity.StringEntity;
  * rest will be handled by the controller
  * Created by Claudiu on 19/05/2015.
  */
-public abstract class RestController {
+public abstract class LoopjController {
 
     public static String BASE_URL;
     public static boolean DEBUG;
-    protected RestHandler.Builder sBuilder;
+    protected LoopjHandler.Builder sBuilder;
     private int mErrors = 0;
     private int mSuccesses = 0;
     private ArrayList<RestCall> mCalls = new ArrayList<>();
-    private List<RestHandler> mRestCallsToBeExecuted = new ArrayList<>();
+    private List<LoopjHandler> mRestCallsToBeExecuted = new ArrayList<>();
 
     protected abstract Context getContext();
 
@@ -86,7 +86,7 @@ public abstract class RestController {
 
     public boolean doRestCall(String methodCall, RequestParams params, int type,
                               MainEvent successfulEvent, MainEvent failEvent, boolean shouldExecuteLater) {
-        RestHandler temp = sBuilder
+        LoopjHandler temp = sBuilder
                 .setMethodCall(methodCall)
                 .setRequestParams(params)
                 .setEventSuccess(successfulEvent)
@@ -94,7 +94,7 @@ public abstract class RestController {
                 .setType(type)
                 .create(this);
         if (hasInternet()) {
-            if (DEBUG) Log.i("RestController", "Starting execution of request = " + methodCall);
+            if (DEBUG) Log.i("LoopjController", "Starting execution of request = " + methodCall);
             sBuilder.build(temp);
             return true;
         } else {
@@ -107,7 +107,7 @@ public abstract class RestController {
     public boolean doCustomRestCall(String url, RequestParams params, int type,
                                     MainEvent successfulEvent, MainEvent failEvent) {
         if (hasInternet()) {
-            if (DEBUG) Log.i("RestController", "Starting execution of custom request = " + url);
+            if (DEBUG) Log.i("LoopjController", "Starting execution of custom request = " + url);
             sBuilder
                     .setCustomCall(true)
                     .setCustomUrl(url)
@@ -131,13 +131,13 @@ public abstract class RestController {
 
     public boolean doJSONRestPost(String methodCall, String jsonObject, RequestParams params, MainEvent successfulEvent, MainEvent failureEvent) {
         if (hasInternet()) {
-            if (DEBUG) Log.i("RestController", "Starting execution of json Post =" + methodCall);
+            if (DEBUG) Log.i("LoopjController", "Starting execution of json Post =" + methodCall);
             StringEntity entity = new StringEntity(jsonObject, "UTF-8");
             sBuilder
                     .setMethodCall(methodCall)
                     .setRequestParams(params)
                     .setEntity(entity)
-                    .setType(RestHandler.TYPE_JSON)
+                    .setType(LoopjHandler.TYPE_JSON)
                     .setEventSuccess(successfulEvent)
                     .setEventFail(failureEvent)
                     .build(this);
@@ -155,7 +155,7 @@ public abstract class RestController {
 
 
     /**
-     * Handles the response from the RestHandler and does some stuff
+     * Handles the response from the LoopjHandler and does some stuff
      * Still to be improved and added more logic
      *
      * @param call The HttpCall request and response details
