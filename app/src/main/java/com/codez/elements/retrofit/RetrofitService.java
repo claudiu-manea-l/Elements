@@ -23,19 +23,6 @@ public class RetrofitService {
 
     public static ISampleAPI API = instantiateService(ISampleAPI.class);
 
-   /* public static <T> T instantiateService(Class<T> serviceClass) {
-        final OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .connectTimeout(60, TimeUnit.SECONDS)
-                .readTimeout(60, TimeUnit.SECONDS)
-                .build();
-
-        Retrofit builder = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .client(new okhttp3.OkHttpClient())
-                .build();
-        return builder.create(serviceClass);
-    }*/
-
     public static <T> T instantiateService(Class<T> serviceClass) {
         final OkHttpClient okHttpClient = new OkHttpClient();
         okHttpClient.setReadTimeout(60, TimeUnit.SECONDS);

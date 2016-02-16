@@ -37,7 +37,7 @@ public class RxListActivity extends AppCompatActivity implements LoaderManager.L
         mProgressLayout = findViewById(com.codez.mainlibrary.R.id.progress_layout);
         mListLayout = findViewById(com.codez.mainlibrary.R.id.list_layout);
         getSupportLoaderManager().initLoader(0, null, this);
-        DataController.getController().getCustomerStaff(this);
+        DataController.getController().getCustomerStaff();
 
     }
 
