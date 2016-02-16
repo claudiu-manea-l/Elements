@@ -1,8 +1,8 @@
 package com.codez.mainlibrary;
 
 import android.content.Context;
-import android.test.mock.MockContext;
-import android.test.suitebuilder.annotation.SmallTest;
+import android.support.test.runner.AndroidJUnit4;
+import android.test.suitebuilder.annotation.MediumTest;
 
 import com.codez.mainlibrary.utilities.DiskUtils;
 
@@ -10,17 +10,14 @@ import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.net.URL;
 
 import static android.support.test.InstrumentationRegistry.getTargetContext;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 import static org.mockito.Matchers.any;
@@ -34,7 +31,8 @@ import static org.mockito.Mockito.when;
 /**
  * Created by Shafqat on 2/1/2016.
  */
-@SmallTest
+@RunWith(AndroidJUnit4.class)
+@MediumTest
 public class DiskUtilsTests {
 
     String FILE_NAME = "data.txt";

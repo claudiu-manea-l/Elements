@@ -17,6 +17,13 @@ import static org.junit.Assert.*;
 public class MapUtilsTests {
 
     @Test
+    public void simpleAddressTest() {
+        //Why did you create MapUtils.simpleAddress() ?
+        String address = MapUtils.simpleAddress("Riga Central Market, Latgale Suburb, Riga LV-1050, Latvia");
+        assertThat(address, is("Riga Central Market, Latgale Suburb, Riga "));
+    }
+
+    @Test
     public void latLongDistanceTest() {
         LatLng start = new LatLng(50.06639, 5.714722);
         LatLng end = new LatLng(58.64389, 3.07);
