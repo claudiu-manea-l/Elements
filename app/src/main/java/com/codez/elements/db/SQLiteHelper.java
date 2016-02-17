@@ -12,7 +12,7 @@ import com.codez.elements.db.tables.CustAvailableTable;
  */
 public class SQLiteHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 3;
+    public static final int DATABASE_VERSION = 4;
     public static final String DATABASE_NAME = "sample_db";
 
     public SQLiteHelper(Context context){

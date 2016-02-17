@@ -1,5 +1,6 @@
 package com.codez.elements.activities;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import com.codez.elements.controllers.DataController;
 import com.codez.elements.db.tables.CStaffTable;
 import com.codez.elements.temp.DataProvider;
+
 
 /**
  * Created by Claudiu on 2/16/2016.
@@ -38,6 +40,7 @@ public class RxListActivity extends AppCompatActivity implements LoaderManager.L
         mListLayout = findViewById(com.codez.mainlibrary.R.id.list_layout);
         getSupportLoaderManager().initLoader(0, null, this);
         DataController.getController().getCustomerStaff();
+
 
     }
 

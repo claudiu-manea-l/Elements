@@ -4,8 +4,8 @@ import com.codez.elements.temp.StaffModel;
 
 import java.util.List;
 
-import retrofit.http.GET;
-import retrofit.http.Query;
+import retrofit2.http.GET;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -13,6 +13,6 @@ import rx.Observable;
  */
 public interface ISampleAPI {
 
-    @GET("/SMSStaff/GetCustomerStaff")
+    @GET("SMSStaff/GetCustomerStaff")
     Observable<RetrofitService.ServerResponse<List<StaffModel>>> getCustomerStaff(@Query("customerID") int id);
 }
