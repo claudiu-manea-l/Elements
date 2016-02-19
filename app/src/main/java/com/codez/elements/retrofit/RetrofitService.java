@@ -39,24 +39,6 @@ public class RetrofitService {
         return builder.create(serviceClass);
     }
 
-   /* public static <T> T instantiateService(Class<T> serviceClass) {
-        final OkHttpClient okHttpClient = new OkHttpClient();
-        okHttpClient.setReadTimeout(60, TimeUnit.SECONDS);
-        okHttpClient.setConnectTimeout(60, TimeUnit.SECONDS);
-        RestAdapter.Builder builder = new RestAdapter.Builder()
-                .setEndpoint(BASE_URL)
-                .setLogLevel(RestAdapter.LogLevel.BASIC)
-                .setLog(new RestAdapter.Log() {
-                    @Override
-                    public void log(String message) {
-                        Log.i("Retrofit", message);
-                    }
-                })
-                .setClient(new OkClient(okHttpClient));
-        RestAdapter adapter = builder.build();
-        return adapter.create(serviceClass);
-    }*/
-
     public static Observable<ServerResponse<List<StaffModel>>> getCustomerStaff(){
         return API.getCustomerStaff(157);
     }

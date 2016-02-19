@@ -1,8 +1,7 @@
 package com.codez.elements.controllers;
 
-import android.content.ContentValues;
+import android.database.ContentObservable;
 import android.widget.Toast;
-
 import com.codez.elements.retrofit.RetrofitService;
 import com.codez.elements.temp.DataProvider;
 import com.codez.elements.temp.StaffModel;
@@ -12,8 +11,10 @@ import com.path.android.jobqueue.RetryConstraint;
 
 import java.util.List;
 
+import rx.Observable;
+import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -35,18 +36,45 @@ public class GetStaffJob extends Job {
         RetrofitService.getCustomerStaff()
                 .subscribeOn(Schedulers.immediate())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<RetrofitService.ServerResponse<List<StaffModel>>>() {
-            @Override
-            public void call(RetrofitService.ServerResponse<List<StaffModel>> listServerResponse) {
-                if (getApplicationContext() != null) {
-                    ContentValues[] cvs = new ContentValues[listServerResponse.getContent().size()];
-                    for (int i = 0; i < listServerResponse.getContent().size(); i++)
-                        cvs[i] = listServerResponse.getContent().get(i).toContentValues();
-                    getApplicationContext().getContentResolver().bulkInsert(DataProvider.STAFF_CONTENT_URI, cvs);
-                    Toast.makeText(getApplicationContext(),"Done",Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+                .map(new Func1<RetrofitService.ServerResponse<List<StaffModel>>, List<StaffModel>>() {
+                    @Override
+                    public List<StaffModel> call(RetrofitService.ServerResponse<List<StaffModel>> listServerResponse) {
+                        return listServerResponse.getContent();
+                    }
+                })
+                .flatMap(new Func1<List<StaffModel>, Observable<StaffModel>>() {
+                    @Override
+                    public Observable<StaffModel> call(List<StaffModel> staffModels) {
+                        return Observable.from(staffModels);
+                    }
+                })
+                .filter(new Func1<StaffModel, Boolean>() {
+                    @Override
+                    public Boolean call(StaffModel staffModel) {
+                        return !staffModel.getAvailability().isEmpty();
+                    }
+                })
+                .subscribe(new Observer<StaffModel>() {
+                    @Override
+                    public void onCompleted() {
+                        Toast.makeText(getApplicationContext(),"Done",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(StaffModel staffModel) {
+                        if (getApplicationContext() != null) {
+                            getApplicationContext().getContentResolver().insert(DataProvider.STAFF_CONTENT_URI,
+                                    staffModel.toContentValues());
+                        }
+                    }
+                });
+
+
     }
 
     @Override

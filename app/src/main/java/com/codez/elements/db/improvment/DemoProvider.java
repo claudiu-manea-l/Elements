@@ -1,6 +1,9 @@
 package com.codez.elements.db.improvment;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import android.net.Uri;
+import android.support.annotation.Nullable;
 
 import com.codez.elements.db.Component;
 import com.codez.elements.db.tables.CStaffTable;
@@ -11,29 +14,40 @@ import java.util.HashMap;
 /**
  * Created by Claudiu on 2/16/2016.
  */
-public class DemoProvider {
+public class DemoProvider extends SimpleProvider{
     public static final String PROVIDER_NAME = "com.codez.elements";
     public static final String MAIN_URL = "content://" + PROVIDER_NAME + "/";
 
-    public static final int CSTAFF = 0;
-
-    private static final String[] TABLES = new String[]{
-            CStaffTable.TABLE, CustAvailableTable.TABLE
-    };
-    public static HashMap<String,Component> COMPONENTS;
-
-
     static {
-        COMPONENTS = new HashMap<>();
-        for(int i=0;i<TABLES.length;i++) {
-            Uri uri = Uri.parse(MAIN_URL+TABLES[i]);
-            COMPONENTS.put(TABLES[i],new Component(TABLES[i],uri,false));
-            COMPONENTS.put(TABLES[i],new Component(TABLES[i],uri,true));
-        }
-        Uri uri =DemoProvider.COMPONENTS.get(DemoProvider.CSTAFF).URI;
+        TABLES = new String[]{
+                CStaffTable.TABLE, CustAvailableTable.TABLE
+        };
     }
 
-    static {
+    @Override
+    public HashMap<Integer, Component> defineComponents() {
+        return null;
+    }
 
+    @Nullable
+    @Override
+    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+        return null;
+    }
+
+    @Nullable
+    @Override
+    public Uri insert(Uri uri, ContentValues values) {
+        return null;
+    }
+
+    @Override
+    public int delete(Uri uri, String selection, String[] selectionArgs) {
+        return 0;
+    }
+
+    @Override
+    public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+        return 0;
     }
 }
