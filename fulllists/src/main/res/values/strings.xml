@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FullLists</string>
+    <string name="common.empty.list">No items present in the list!</string>
+    <string name="common.empty.item">No item</string>
+</resources>

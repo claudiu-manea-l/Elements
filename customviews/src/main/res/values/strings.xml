@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CustomViews</string>
+    <string name="common.empty.item">No item</string>
+</resources>

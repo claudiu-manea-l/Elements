@@ -18,7 +18,7 @@ import com.codez.elements.db.tables.CustAvailableTable;
  * Created by Claudiu on 2/16/2016.
  */
 public class ElementsProvider extends ContentProvider{
-    public static final String PROVIDER_NAME = "com.codez.elements";
+    public static final String PROVIDER_NAME = "com.codez.elements.demo";
     public static final String MAIN_URL = "content://" + PROVIDER_NAME + "/";
     protected static final String DIR_URI = "vnd.android.cursor.dir/vnd.eptron.";
     protected static final String ITEM_URI = "vnd.android.cursor.item/vnd.eptron.";
@@ -46,7 +46,7 @@ public class ElementsProvider extends ContentProvider{
     static {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
         uriMatcher.addURI(PROVIDER_NAME,CStaffTable.TABLE,CSTAFF);
-        uriMatcher.addURI(PROVIDER_NAME,CStaffTable.TABLE,AVAILABILITY);
+        uriMatcher.addURI(PROVIDER_NAME,CustAvailableTable.TABLE,AVAILABILITY);
     }
 
     @Nullable

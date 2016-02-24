@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TextViewPlus">
+        <attr name="customFont" format="string" />
+        <attr name="saveEnabled" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="ClearableEditText">
+        <attr name="clearOnFocus" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="ExpandableView">
+        <attr name="customTitle" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomCheckbox">
+        <attr name="useRadios" format="boolean" />
+    </declare-styleable>
+</resources>

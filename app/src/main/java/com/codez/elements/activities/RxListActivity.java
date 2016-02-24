@@ -32,12 +32,12 @@ public class RxListActivity extends AppCompatActivity implements LoaderManager.L
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.codez.mainlibrary.R.layout.f_main_list);
-        ListView view = (ListView) findViewById(com.codez.mainlibrary.R.id.list_view);
+        setContentView(com.codez.fulllists.R.layout.f_main_list);
+        ListView view = (ListView) findViewById(com.codez.fulllists.R.id.list_view);
         mAdapter = new StaffAdapter();
         view.setAdapter(mAdapter);
-        mProgressLayout = findViewById(com.codez.mainlibrary.R.id.progress_layout);
-        mListLayout = findViewById(com.codez.mainlibrary.R.id.list_layout);
+        mProgressLayout = findViewById(com.codez.fulllists.R.id.progress_layout);
+        mListLayout = findViewById(com.codez.fulllists.R.id.list_layout);
         getSupportLoaderManager().initLoader(0, null, this);
         DataController.getController().getCustomerStaff();
 
@@ -78,12 +78,12 @@ public class RxListActivity extends AppCompatActivity implements LoaderManager.L
 
         @Override
         public View newView(Context context, Cursor cursor, ViewGroup parent) {
-            return getLayoutInflater().inflate(com.codez.mainlibrary.R.layout.c_item_simple_spinner, null);
+            return getLayoutInflater().inflate(com.codez.customviews.R.layout.c_item_simple_spinner, null);
         }
 
         @Override
         public void bindView(View view, Context context, Cursor cursor) {
-            TextView textView = (TextView) view.findViewById(com.codez.mainlibrary.R.id.spinner_item);
+            TextView textView = (TextView) view.findViewById(com.codez.customviews.R.id.spinner_item);
             String name = cursor.getString(cursor.getColumnIndex(CStaffTable.NAME));
             textView.setText(name);
         }

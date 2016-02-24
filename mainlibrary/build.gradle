@@ -23,25 +23,6 @@ android {
         htmlOutput file("build/lint/lint-report.html")
     }
 
-    sourceSets {
-        main {
-            manifest.srcFile '/src/main/AndroidManifest.xml'
-            java.srcDirs = ['/src/main/java', '.apt_generated']
-            aidl.srcDirs = ['/src/main/aidl', '.apt_generated']
-            assets.srcDirs = ['/src/main/assets']
-            res.srcDirs = [
-                    '/src/main/res/layouts/custom_view/expandable_view',
-                    '/src/main/res/layouts/custom_view',
-                    '/src/main/res/layouts/common',
-                    '/src/main/res/layouts/titled_list',
-                    '/src/main/res/layouts/restful_list',
-                    '/src/main/res/layouts/maps',
-                    '/src/main/res/layouts',
-                    '/src/main/res'
-            ]
-        }
-    }
-
     testOptions {
         unitTests.returnDefaultValues = true
     }

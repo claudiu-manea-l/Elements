@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.codez.elements">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
         android:name=".ElementsApp"
         android:allowBackup="true"
@@ -43,10 +45,10 @@
         </activity>
 
         <provider
-            android:name=".temp.DataProvider"
+            android:name=".db.ElementsProvider"
             android:authorities="com.codez.elements.demo"
             android:enabled="true"
-            android:exported="false" />
+            android:exported="true" />
 
         <meta-data
             android:name="io.fabric.ApiKey"

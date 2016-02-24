@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 
 import com.codez.elements.db.tables.CustAvailableTable;
-import com.codez.mainlibrary.restful_list.model.SQLObject;
+import com.codez.fulllists.model.SQLObject;
 import com.codez.mainlibrary.utilities.DateUtils;
 
 /**

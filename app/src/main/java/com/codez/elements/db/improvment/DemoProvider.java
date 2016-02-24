@@ -14,8 +14,8 @@ import java.util.HashMap;
 /**
  * Created by Claudiu on 2/16/2016.
  */
-public class DemoProvider extends SimpleProvider{
-    public static final String PROVIDER_NAME = "com.codez.elements";
+public class DemoProvider {
+   /* public static final String PROVIDER_NAME = "com.codez.elements";
     public static final String MAIN_URL = "content://" + PROVIDER_NAME + "/";
 
     static {
@@ -49,5 +49,5 @@ public class DemoProvider extends SimpleProvider{
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         return 0;
-    }
+    }*/
 }

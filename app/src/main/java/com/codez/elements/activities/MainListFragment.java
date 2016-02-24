@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.codez.elements.db.tables.CStaffTable;
 import com.codez.elements.temp.DataProvider;
-import com.codez.mainlibrary.restful_list.lists.UpdatableSQList;
+import com.codez.fulllists.lists.UpdatableSQList;
 
 /**
  * Created by Eptron on 1/25/2016.

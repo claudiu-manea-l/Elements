@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 
 import com.codez.elements.db.tables.CStaffTable;
-import com.codez.mainlibrary.restful_list.model.SQLObject;
+import com.codez.fulllists.model.SQLObject;
 import com.codez.mainlibrary.utilities.OtherUtils;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by Eptron on 1/25/2016.
  */
-public class StaffModel extends SQLObject{
+public class StaffModel extends SQLObject {
     private String Name;
     private String NameFirst;
     private String Mobile;
@@ -161,4 +161,46 @@ public class StaffModel extends SQLObject{
     public String getPicture() {
         return PictureURL;
     }
+
+    public static StaffModel getDummyStaff() {
+        StaffModel model = new StaffModel();
+        model.Name = "Claudiu";
+        model.NameFirst = "Manea";
+        model.PersonnelID = 6969;
+        model.Mobile = "6969999";
+        model.Email = "claudiu@eptron.eu";
+        model.City = "Riga";
+        model.ZipCode = "LV-1057";
+        model.Street = "Barona";
+        model.StreetNumber = "5";
+        model.StreetBox = "5";
+        model.Telephone = "6969999";
+        model.Fax = "9996969";
+        model.LanguageDE = "1";
+        model.LanguageFR = "0";
+        model.LanguageNL = "1";
+        model.PictureURL = "";
+        return model;
+    }
+
+    public boolean isEqual(StaffModel model) {
+        if (!model.Name.equals(Name)) return false;
+        if (!model.NameFirst.equals(NameFirst)) return false;
+        if (!model.Mobile.equals(Mobile)) return false;
+        if (!model.Email.equals(Email)) return false;
+        if (!model.City.equals(City)) return false;
+        if (!model.ZipCode.equals(ZipCode)) return false;
+        if (!model.Street.equals(Street)) return false;
+        if (!model.StreetNumber.equals(StreetNumber)) return false;
+        if (!model.StreetBox.equals(StreetBox)) return false;
+        if (!model.Telephone.equals(Telephone)) return false;
+        if (!model.Fax.equals(Fax)) return false;
+        if (!model.LanguageDE.equals(LanguageDE)) return false;
+        if (!model.LanguageFR.equals(LanguageFR)) return false;
+        if (!model.LanguageNL.equals(LanguageNL)) return false;
+        if (!model.PictureURL.equals(PictureURL)) return false;
+        if (model.PersonnelID != PersonnelID) return false;
+        return true;
+    }
+
 }

@@ -3,7 +3,7 @@ package com.codez.elements.db.tables;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
-import com.codez.mainlibrary.restful_list.model.UpdatableItem;
+import com.codez.fulllists.model.UpdatableItem;
 
 /**
  * Created by Eptron on 11/12/2015.
