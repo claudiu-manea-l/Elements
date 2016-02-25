@@ -24,7 +24,7 @@ android {
         applicationId "com.codez.elements"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 10
+        versionCode 11
         versionName "1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
