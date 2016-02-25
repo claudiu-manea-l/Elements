@@ -78,6 +78,18 @@ public class DateUtilsTests {
     }
 
     @Test
+    public void formatDateToDisplay_null2() {
+        String testDate = DateUtils.formatDateToDisplay(null);
+        assertThat(testDate, isEmptyOrNullString());
+    }
+
+    @Test
+    public void formatDateToDisplay_null3() {
+        String testDate = DateUtils.formatDateToDisplay(null);
+        assertThat(testDate, isEmptyOrNullString());
+    }
+
+    @Test
     public void formatDateToDisplay_success() {
         String testDate = DateUtils.formatDateToDisplay(mTestDate_AppDateFormat);
         assertThat(testDate, is(mTestDate_DisplayFormat));
