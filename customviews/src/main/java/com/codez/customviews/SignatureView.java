@@ -25,6 +25,8 @@ public class SignatureView extends View {
     private static final float STROKE_WIDTH = 5f;
 
     private static final float HALF_STROKE_WIDTH = STROKE_WIDTH / 2;
+    private static final String TAG = "SignatureView";
+
     private final RectF dirtyRect = new RectF();
     private Paint paint = new Paint();
     private Path path = new Path();
@@ -43,6 +45,7 @@ public class SignatureView extends View {
     }
 
     public static Bitmap getResizedBitmap(Bitmap bm, int newHeight, int newWidth) {
+        Log.d(TAG, "getResizedBitmap() called with: " + "bm = [" + bm + "], newHeight = [" + newHeight + "], newWidth = [" + newWidth + "]");
         int width = bm.getWidth();
         int height = bm.getHeight();
         float scaleWidth = ((float) newWidth) / width;
@@ -54,7 +57,7 @@ public class SignatureView extends View {
         matrix.postScale(scaleWidth, scaleHeight);
         // RECREATE THE NEW BITMAP
         Bitmap resizedBitmap = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, false);
-
+        Log.d(TAG, "getResizedBitmap() returned: " + resizedBitmap);
         return resizedBitmap;
     }
 
