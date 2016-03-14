@@ -6,7 +6,7 @@
     android:orientation="horizontal">
 
 
-    <com.codez.mainlibrary.custom_views.TextViewPlus
+    <com.codez.customviews.TextViewPlus
         android:id="@+id/desc_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,7 +14,7 @@
         android:padding="@dimen/small_margin"
         android:text="sssssssssssssssssssssssssssssssssssssssssssssssss" />
 
-    <com.codez.mainlibrary.custom_views.TextViewPlus
+    <com.codez.customviews.TextViewPlus
         android:id="@+id/desc_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

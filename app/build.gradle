@@ -29,6 +29,10 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
+    dataBinding{
+        enabled true
+    }
+
     lintOptions {
         abortOnError false
         htmlOutput file("build/lint/lint-report.html")

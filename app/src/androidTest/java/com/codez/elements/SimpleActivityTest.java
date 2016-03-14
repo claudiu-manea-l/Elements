@@ -45,7 +45,7 @@ public class SimpleActivityTest extends ActivityTestRule<SimpleActivity>{
                 .inAdapterView(withId(R.id.list_view)).atPosition(0)
                 .perform(click());
 
-        onView(withId(R.id.text1))
+        onView(withId(android.R.id.text1))
                 .check(matches(withText(TEXT_ITEM_EXPANDABLE_VIEW)));
     }
 

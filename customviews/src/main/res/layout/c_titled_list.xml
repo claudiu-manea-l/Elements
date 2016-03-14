@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.codez.mainlibrary.custom_views.titled_list.ListWithTitle xmlns:android="http://schemas.android.com/apk/res/android"
+<com.codez.customviews.titledlist.ListWithTitle xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.codez.mainlibrary.custom_views.TextViewPlus
+    <com.codez.customviews.TextViewPlus
         android:id="@+id/desc_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.codez.mainlibrary.custom_views.TextViewPlus
+        <com.codez.customviews.TextViewPlus
             android:id="@+id/empty_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,4 +33,4 @@
 
     </LinearLayout>
 
-</com.codez.mainlibrary.custom_views.titled_list.ListWithTitle>
+</com.codez.customviews.titledlist.ListWithTitle>

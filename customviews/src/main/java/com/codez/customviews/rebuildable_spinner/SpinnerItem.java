@@ -17,16 +17,7 @@ public class SpinnerItem {
     }
 
     public SpinnerItem(String name, String code) {
-        if (!TextUtils.isEmpty(code)) {
-            try {
-                mID = Integer.parseInt(name);
-            } catch (NumberFormatException e) {
-                String id = name;
-                id = id.replaceAll("[^0-9]", "");
-                if (id.length() > 0)
-                    mID = Integer.parseInt(id);
-            }
-        }
+        mID = parseCode(code);
         mItemCode = code;
         mItemName = name;
     }
@@ -47,6 +38,21 @@ public class SpinnerItem {
 
     public int getItemId() {
         return mID;
+    }
+
+    private int parseCode(String code) {
+        int id = -1;
+        if (!TextUtils.isEmpty(code)) {
+            try {
+                id = Integer.parseInt(code);
+            } catch (NumberFormatException e) {
+                String codeString = code;
+                codeString = codeString.replaceAll("[^0-9]", "");
+                if (codeString.length() > 0)
+                    id = Integer.parseInt(codeString);
+            }
+        }
+        return id;
     }
 
 }
